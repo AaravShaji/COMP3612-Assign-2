@@ -1,0 +1,145 @@
+/* ===================================== */
+/* GENERAL THEME COLORS */
+/* ===================================== */
+:root {
+    --header-bg: #1c1c1c;     /* Dark charcoal */
+    --header-text: #f0f0f0;
+
+    --footer-bg: #111111;     /* Slightly darker charcoal */
+    --footer-text: #e0e0e0;
+
+    --accent-blue: #77aaff;
+}
+
+/* ===================================== */
+/* HEADER + NAVBAR */
+/* ===================================== */
+.site-header {
+    background-color: var(--header-bg);
+    color: var(--header-text);
+    width: 100%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 28px;
+}
+
+/* LOGO */
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.25s;
+}
+.logo:hover {
+    color: var(--accent-blue);
+}
+
+/* CENTER NAV BUTTONS */
+.nav-center {
+    display: flex;
+    gap: 24px;
+}
+
+.nav-link {
+    background: none;
+    border: none;
+    color: #cccccc;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 8px 14px;
+    border-radius: 6px;
+    transition: 0.25s;
+}
+
+.nav-link:hover {
+    background: #333;
+    color: #fff;
+}
+
+/* CART BADGE */
+.cart-badge {
+    background: #ff4c4c;
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+/* RIGHT SIDE */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* ABOUT BUTTON */
+.about-btn {
+    background: none;
+    border: none;
+    color: #bbbbbb;
+    cursor: pointer;
+    padding: 6px 10px;
+}
+.about-btn:hover {
+    color: #fff;
+    background: #333;
+    border-radius: 6px;
+}
+
+/* ===================================== */
+/* FOOTER */
+/* ===================================== */
+.site-footer {
+    background: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 25px;
+    margin-top: 60px;
+    border-top: 2px solid #000;
+}
+
+.site-footer p {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+/* Footer About Link */
+.footer-link {
+    margin-top: 12px;
+    background: none;
+    border: none;
+    color: var(--accent-blue);
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+.footer-link:hover {
+    color: #cfe2ff;
+}
+
+/* ===================================== */
+/* RESPONSIVE NAVIGATION */
+/* ===================================== */
+@media (max-width: 800px) {
+    .navbar-container {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .nav-center {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+}
+
+

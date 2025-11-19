@@ -2,19 +2,62 @@
 <head>
     <meta charset="UTF-8" />
     <title>COMP 3612 – Clothing Store</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-<header>
-    <!--insert header-->
+<header class="site-header">
+    <nav class="navbar-container">
+        
+        <div class="nav-left">
+            <h1 class="logo" data-view="home">Clothify</h1>
+        </div>
+
+        <div class="nav-center">
+            <button class="nav-link" data-view="home">Home</button>
+            <button class="nav-link" data-view="women">Women</button>
+            <button class="nav-link" data-view="men">Men</button>
+            <button class="nav-link" data-view="browse">Browse</button>
+            <button class="nav-link about-btn" data-view="about">About</button>
+        </div>
+
+        <div class="nav-right">
+            <span id="cartCountBadge" class="cart-badge">0</span>
+            <button class="nav-link cart-btn" data-view="cart">Cart</button>
+        </div>
+
+    </nav>
 </header>
 
 <main>
-    <!--insert home, men, women, browse, about, cart view-->
+    <article>
+        <!--insert home-->
+    </article>
+
+    <article>
+        <!--insert womens-->
+    </article>
+
+    <article>
+        <!--insert mens-->
+    </article>
+
+    <article>
+        <!--insert browse-->
+    </article>
+
+    <article>
+        <!--insert about-->
+    </article>
+
+    <article>
+        <!--insert cart-->
+    </article>
 </main>
 
-<footer>
-    <!--insert footer-->
+<footer class="site-footer">
+    <p>© 2025 Clothify — Online Clothing Store</p>
+    <button id="aboutFooterBtn" class="footer-link">About This Project</button>
 </footer>
 </body>
 </html>
