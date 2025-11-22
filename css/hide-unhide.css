@@ -1,0 +1,12 @@
+.view {
+    display: none;
+}
+
+.view.active {
+    display: block;
+}
+
+.nav-link.active {
+    color: var(--active-blue);
+    font-weight: bold;
+}
