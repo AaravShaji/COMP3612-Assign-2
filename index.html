@@ -5,8 +5,10 @@
 
     <link rel="stylesheet" href="css/header-footer.css">
     <link rel="stylesheet" href="css/hide-unhide.css">
+    <link rel="stylesheet" href="css/about-us.css">
 
     <script src="js/hide-unhide.js"></script>
+    <script src="js/about-us.js"></script>
 </head>
 
 <body>
@@ -58,6 +60,54 @@
     <article id="view-about" class="view">
         <!-- ABOUT CONTENT -->
         <h2>About Clothify</h2>
+
+        <dialog id="aboutModal" class="about-modal">
+
+            <div class="about-header">
+                <h2>About This Project</h2>
+                <button id="aboutCloseX" class="about-close-x">✕</button>
+            </div>
+
+            <div class="about-content">
+                <p class="lead">
+                    <strong>Clothify</strong> is a dynamic single-page online clothing store built for 
+                    <strong>COMP 3612 – Web Development for Computer Science</strong>.  
+                    This site demonstrates JSON data loading, DOM manipulation, responsive layouts, 
+                    modular JavaScript design, and SPA-style view routing.
+                </p>
+
+                <h3>🚀 Technologies Used</h3>
+                <ul>
+                    <li>HTML5 (semantic structure + dialog modal)</li>
+                    <li>CSS3 (flexbox, grid, animations, gradients)</li>
+                    <li>JavaScript (ES6 modules, event delegation, SPA navigation)</li>
+                    <li>JSON (dynamic data: products, categories, colors)</li>
+                    <li>DALL-E (artificial intelligence used for pictures)</li>
+                </ul>
+
+                <h3>🧑‍🎓 About the Developer</h3>
+                <p>
+                    Created by <strong>James Yap, Aarav Shaji</strong>, Computer Science students at 
+                    Mount Royal University with an interest in UI/UX, game development, 
+                    and building highly interactive web applications.
+                </p>
+
+                <h3>📦 GitHub Repository</h3>
+                <p>
+                    View the project code here:<br>
+                    <a href="https://github.com/AaravShaji/COMP3612-Assign-2/tree/main" target="_blank">
+                        github.com
+                    </a>
+                </p>
+
+            </div>
+
+            <div class="about-footer">
+                <button id="aboutCloseBtn" class="modal-btn">Close</button>
+            </div>
+
+        </dialog>
+
     </article>
 
     <article id="view-cart" class="view">

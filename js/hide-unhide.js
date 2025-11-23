@@ -1,3 +1,7 @@
+/* ============================= */
+/* HIDE AND UNHIDE ARTICLES JAVASCRIPT */
+/* ============================= */
+
 document.addEventListener("DOMContentLoaded", ()=>{
 
 function showView(viewName) {

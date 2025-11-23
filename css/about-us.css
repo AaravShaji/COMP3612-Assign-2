@@ -1,0 +1,86 @@
+/* ============================= */
+/* ABOUT US MODAL STYLES */
+/* ============================= */
+
+.about-modal {
+    width: 600px;
+    max-height: 80vh;
+    border: none;
+    border-radius: 12px;
+    padding: 0;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    animation: fadeIn 0.3s ease;
+}
+
+/* Modal backdrop dimming */
+.about-modal::backdrop {
+    background: rgba(0,0,0,0.65);
+    backdrop-filter: blur(2px);
+}
+
+.about-header {
+    background: linear-gradient(90deg, #1e1e1e, #343434);
+    padding: 16px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.about-header h2 {
+    margin: 0;
+}
+
+.about-close-x {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.about-close-x:hover {
+    color: #ffb3b3;
+}
+
+.about-content {
+    padding: 20px 26px;
+    overflow-y: auto;
+    max-height: 55vh;
+}
+
+.about-content h3 {
+    margin-top: 20px;
+}
+
+.about-content .lead {
+    margin-bottom: 20px;
+}
+
+.about-footer {
+    padding: 15px 20px;
+    text-align: right;
+    background: #f2f2f2;
+    border-top: 1px solid #d0d0d0;
+}
+
+.modal-btn {
+    padding: 8px 16px;
+    background: #437cf3;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.modal-btn:hover {
+    background: #6da0ff;
+}
+
+/* Modal fade-in animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to   { opacity: 1; transform: scale(1); }
+}
