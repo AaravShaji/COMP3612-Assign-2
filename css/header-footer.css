@@ -26,7 +26,9 @@
     position: sticky;
     top: 0;
     z-index: 1000;
+    height: 60px;
 }
+
 
 .navbar-container {
     display: flex;
@@ -45,6 +47,15 @@
 .logo:hover {
     color: var(--accent-blue);
 }
+.nav-left .logo img {
+    width: 80px;       
+    height: auto;
+    display: block;
+    position: absolute;
+    top: 5px;
+    left: 10px;
+}
+
 
 /* CENTER NAV BUTTONS */
 .nav-center {
