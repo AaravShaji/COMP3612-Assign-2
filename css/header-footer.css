@@ -2,13 +2,17 @@
 /* GENERAL THEME COLORS */
 /* ===================================== */
 :root {
-    --header-bg: #1c1c1c;     /* Dark charcoal */
+    --header-bg: #1c1c1c;    
     --header-text: #f0f0f0;
 
-    --footer-bg: #111111;     /* Slightly darker charcoal */
+    --footer-bg: #111111;     
     --footer-text: #e0e0e0;
 
     --accent-blue: #77aaff;
+    --accent-lightBlue: #a9c8ff; 
+    --accent-white: #fff;
+    --accent-gray: #555;
+    --accent-black: #111;
 }
 
 /* ===================================== */
