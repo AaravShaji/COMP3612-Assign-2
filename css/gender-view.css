@@ -1,0 +1,109 @@
+.gender-view {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px 40px;
+}
+
+.gender-hero {
+    padding: 32px 40px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.18);
+    color: var(--accent-white);
+    display: flex;
+    align-items: flex-end;
+}
+
+/* Slightly different gradients for each gender */
+.gender-hero-women {
+    background: linear-gradient(135deg, #2a2139, #e06ea6);
+}
+
+.gender-hero-men {
+    background: linear-gradient(135deg, #1b2735, #40a9ff);
+}
+
+.gender-hero-text h2 {
+    font-size: 2.2rem;
+    margin-bottom: 8px;
+}
+
+.gender-hero-text p {
+    font-size: 1.05rem;
+    max-width: 520px;
+    line-height: 1.5;
+}
+
+/* Categories grid */
+
+.gender-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 24px;
+}
+
+/* Each category card is a button for future Browse navigation */
+
+.category-card {
+    background: var(--accent-white);
+    border-radius: 12px;
+    padding: 14px 14px 18px;
+    border: none;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.14);
+}
+
+/* Placeholder image box */
+
+.category-thumb {
+    width: 100%;
+    padding-top: 100%;           /* perfect square */
+    background: #f0f0f0;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.category-thumb span {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    color: #b0b0b0;
+    text-transform: lowercase;
+}
+
+/* Category label text */
+
+.category-label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #222;
+}
+
+/* Responsive tweaks */
+
+@media (max-width: 800px) {
+    .gender-view {
+        margin-top: 20px;
+    }
+
+    .gender-hero {
+        padding: 24px 18px;
+    }
+
+    .gender-hero-text h2 {
+        font-size: 1.8rem;
+    }
+}
