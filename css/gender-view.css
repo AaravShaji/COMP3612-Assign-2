@@ -11,6 +11,8 @@
     color: var(--accent-white);
     display: flex;
     align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px; 
 }
 
 /* Slightly different gradients for each gender */
@@ -31,6 +33,34 @@
     font-size: 1.05rem;
     max-width: 520px;
     line-height: 1.5;
+}
+
+/*Gender Hero Image style*/
+
+.gender-hero-text {
+    flex: 1;
+}
+
+/* Right-side hero image box */
+.gender-hero-image {
+    flex: 0 0 300px;      /* fixed width */
+    height: 300px;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+.gender-hero-image-women {
+    background-image: url("../images/p086_b.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.gender-hero-image-men {
+    background-image: url("../images/p101.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 /* Categories grid */
