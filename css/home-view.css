@@ -1,0 +1,199 @@
+#view-home {
+    padding: 50px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    animation: fadeInHome 0.4s ease;
+}
+
+/* Simple fade-in animation */
+@keyframes fadeInHome {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/*Hero Container*/
+
+.home-hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #1a1a1a, #2b2b2b);
+    border-radius: 18px;
+    padding: 40px 50px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    margin-bottom: 50px;
+    color: white;
+}
+
+.hero-text {
+    max-width: 55%;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: #dddddd;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 16px;
+}
+
+.hero-btn {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    border: none;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.hero-btn.primary {
+    background: var(--accent-blue);
+    color: #111;
+}
+
+.hero-btn.primary:hover {
+    background: #a9c8ff;
+}
+
+.hero-btn.secondary {
+    background: transparent;
+    border: 2px solid var(--accent-blue);
+    color: var(--accent-blue);
+}
+
+.hero-btn.secondary:hover {
+    background: var(--accent-blue);
+    color: #111;
+}
+
+/*Hero Image*/
+
+.hero-slider {
+    width: 350px;
+    height: 350px;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+.slider-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s ease;
+}
+
+.slide {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/*Scroll bar under hero image*/
+
+.slider-bar {
+    width: 80%;
+    height: 6px;
+    background: #555;
+    border-radius: 5px;
+    margin: 12px auto 0;
+    position: relative;
+}
+
+.slider-bar-fill {
+    width: 0%;
+    height: 100%;
+    background: var(--accent-blue);
+    border-radius: 5px;
+    transition: width 0.6s ease;
+}
+
+/*Featured Products Preview*/ 
+
+.featured-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #222;
+    text-align: center;
+}
+
+.featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 28px;
+    margin-top: 25px;
+}
+
+.product-preview {
+    background: white;
+    padding: 18px;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    transition: 0.25s;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-preview:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+}
+
+.product-preview h4 {
+    margin-bottom: 6px;
+    font-size: 1.1rem;
+}
+
+.product-preview p {
+    color: #555;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.product-price {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #111;
+}
+
+.product-preview img.product-img {
+    width: auto;
+    max-width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 12px;
+}
+
+/*Response Behaviour*/ 
+
+@media (max-width: 850px) {
+    .home-hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+    }
+
+    .hero-text {
+        max-width: 100%;
+    }
+
+    .hero-slider {
+        margin-top: 30px;
+        width: 260px;
+        height: 260px;
+    }
+}

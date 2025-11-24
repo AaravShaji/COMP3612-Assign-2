@@ -1,4 +1,5 @@
 <html>
+
 <head>
     <meta charset="UTF-8" />
     <title>COMP 3612 – Clothing Store</title>
@@ -7,182 +8,230 @@
     <link rel="stylesheet" href="css/hide-unhide.css">
     <link rel="stylesheet" href="css/about-us-modal.css">
     <link rel="stylesheet" href="css/about-us.css">
+    <link rel="stylesheet" href="css/home-view.css">
 
     <script src="js/hide-unhide.js"></script>
     <script src="js/about-us-modal.js"></script>
-    <script src="js/"></script>
+    <script src="js/home-slider.js"></script>
 </head>
 
 <body>
-<header class="site-header">
-    <nav class="navbar-container">
-        
-        <div class="nav-left">
-            <h1 class="logo" data-view="home">Clothify</h1>
-        </div>
+    <header class="site-header">
+        <nav class="navbar-container">
 
-        <div class="nav-center">
-            <button class="nav-link" data-view="home">Home</button>
-            <button class="nav-link" data-view="women">Women</button>
-            <button class="nav-link" data-view="men">Men</button>
-            <button class="nav-link" data-view="browse">Browse</button>
-            <button class="nav-link about-btn" data-view="about">About</button>
-        </div>
+            <div class="nav-left">
+                <h1 class="logo" data-view="home">Clothify</h1>
+            </div>
 
-        <div class="nav-right">
-            <span id="cartCountBadge" class="cart-badge">0</span>
-            <button class="nav-link cart-btn" data-view="cart">Cart</button>
-        </div>
+            <div class="nav-center">
+                <button class="nav-link" data-view="home">Home</button>
+                <button class="nav-link" data-view="women">Women</button>
+                <button class="nav-link" data-view="men">Men</button>
+                <button class="nav-link" data-view="browse">Browse</button>
+                <button class="nav-link about-btn" data-view="about">About</button>
+            </div>
 
-    </nav>
-</header>
+            <div class="nav-right">
+                <span id="cartCountBadge" class="cart-badge">0</span>
+                <button class="nav-link cart-btn" data-view="cart">Cart</button>
+            </div>
 
-<main>
+        </nav>
+    </header>
 
-    <article id="view-home" class="view active">
-        <!-- HOME CONTENT -->
-        <h2>Home</h2>
-    </article>
+    <main>
 
-    <article id="view-women" class="view">
-        <!-- WOMEN CONTENT -->
-        <h2>Womens Section</h2>
-    </article>
-
-    <article id="view-men" class="view">
-        <!-- MEN CONTENT -->
-        <h2>Mens Section</h2>
-    </article>
-
-    <article id="view-browse" class="view">
-        <!-- BROWSE CONTENT -->
-        <h2>Browse Products</h2>
-    </article>
-
-    <article id="view-about" class="view">
-        <!-- ABOUT CONTENT -->
-        <h2 class="about-page-title">About Clothify</h2>
-
-        <section class="about-section">
-            <p class="about-intro">
-                Clothify is a modern, student-built online clothing store designed to showcase 
-                clean UI, responsive layouts, JSON-powered data rendering, and single-page 
-                application navigation. Built as part of <strong>COMP 3612 – Web Development</strong>, 
-                the website demonstrates practical front-end engineering skills through 
-                dynamic interfaces and real-time content updates.
-            </p>
-
-            <h3 class="about-heading">Our Mission</h3>
-            <p class="about-text">
-                Our mission is to create an elegant and intuitive shopping experience that feels 
-                fast, visually appealing, and easy to navigate. Every product is loaded directly 
-                from JSON data, ensuring a modular design and a clean separation of content from 
-                layout. We aim to mimic the structure of real e-commerce sites while maintaining 
-                readable and maintainable code.
-            </p>
-
-            <h3 class="about-heading">Why Clothify?</h3>
-            <ul class="about-list">
-                <li>Fully client-side SPA navigation with animated view transitions</li>
-                <li>Dynamic product loading using JSON and JavaScript</li>
-                <li>Clean component-based layout (header, footer, modals, views)</li>
-                <li>Modern UI elements including gradients, modals, and animations</li>
-                <li>Accessible design following good HTML semantics</li>
-            </ul>
-
-            <h3 class="about-heading">The Developers</h3>
-            <p class="about-text">
-                Clothify was created by 
-                <strong>James Yap</strong> and <strong>Aarav Shaji</strong>, 
-                Computer Science students at Mount Royal University.  
-                With shared interests in software engineering, UI/UX design, and game development, 
-                our goal was to build something functional, polished, and academically strong.
-            </p>
-
-            <div class="about-team">
-                <div class="team-card">
-                    <img src="images/pic1.jpg" alt="James Profile">
-                    <h4>James Yap</h4>
-                    <p>Developer • Designer • Game Dev Enthusiast</p>
+        <article id="view-home" class="view active">
+            <!-- HERO SECTION -->
+            <section class="home-hero">
+                <div class="hero-text">
+                    <h1 class="hero-title">Discover Your Style</h1>
+                    <p class="hero-subtitle">
+                        Shop the latest trends with smooth navigation, clean UI,
+                        and student-built performance.
+                    </p>
+                    <div class="hero-buttons">
+                        <button class="hero-btn primary" data-view="women">Shop Women</button>
+                        <button class="hero-btn secondary" data-view="men">Shop Men</button>
+                    </div>
                 </div>
+                <div class="hero-slider">
+                    <div class = "slider-track"> 
+                        <img src = "images/p001_a.jpg" class = "slide"/>
+                        <img src = "images/p002_a.jpg" class = "slide"/>
+                        <img src = "images/p003_a.jpg" class = "slide"/>
+                    </div>
+                    <div class = "slider-bar">
+                        <div class = "slider-bar-fill"></div>
+                    </div>
+                </div>
+            </section>
 
-                <div class="team-card">
-                    <img src="images/pic2.jpg" alt="Aarav Profile">
-                    <h4>Aarav Shaji</h4>
-                    <p>Developer • UI/UX • Software Engineering Student</p>
+            <!-- FEATURED PRODUCTS -->
+            <h2 class="featured-title">Featured This Week</h2>
+
+            <div class="featured-grid">
+                <div class="product-preview">
+                    <img src="images/p045_a.jpg" alt="winter jacket" class="product-img"/>
+                    <h4>Cozy Winter Jacket</h4>
+                    <p>Warm • Stylish • Lightweight</p>
+                    <p class="product-price">$129</p>
+                </div>
+                <div class="product-preview">
+                    <img src="images/p017_a.jpg" alt="classic denim" class="product-img"/>
+                    <h4>Classic Denim</h4>
+                    <p>Timeless • Durable</p>
+                    <p class="product-price">$89</p>
+                </div>
+                <div class="product-preview">
+                    <img src="images/p084_a.jpg" alt="winter coat" class="product-img"/>
+                    <h4>Winter Coat</h4>
+                    <p>Soft • Robust • Sleek design</p>
+                    <p class="product-price">$59</p>
                 </div>
             </div>
 
-            <h3 class="about-heading">Our Values</h3>
-            <p class="about-text">
-                We believe in clean design, meaningful user interactions, and developing software 
-                that is simple to understand yet powerful in capability. Clothify represents the 
-                culmination of these values—modern design, strong structure, and purposeful coding.
-            </p>
+        </article>
 
-        </section>
+        <article id="view-women" class="view">
+            <!-- WOMEN CONTENT -->
+            <h2>Womens Section</h2>
+        </article>
 
-    </article>
-    <!-- ABOUT CONTENT MODAL -->
-    <dialog id="aboutModal" class="about-modal">
+        <article id="view-men" class="view">
+            <!-- MEN CONTENT -->
+            <h2>Mens Section</h2>
+        </article>
 
-        <div class="about-header">
-            <h2>About This Project</h2>
-            <button id="aboutCloseX" class="about-close-x">✕</button>
-        </div>
+        <article id="view-browse" class="view">
+            <!-- BROWSE CONTENT -->
+            <h2>Browse Products</h2>
+        </article>
 
-        <div class="about-content">
-            <p class="lead">
-                <strong>Clothify</strong> is a dynamic single-page online clothing store built for 
-                <strong>COMP 3612 – Web Development for Computer Science</strong>.  
-                This site demonstrates JSON data loading, DOM manipulation, responsive layouts, 
-                modular JavaScript design, and SPA-style view routing.
-            </p>
+        <article id="view-about" class="view">
+            <!-- ABOUT CONTENT -->
+            <h2 class="about-page-title">About Clothify</h2>
 
-            <h3>🚀 Technologies Used</h3>
-            <ul>
-                <li>HTML5 (semantic structure + dialog modal)</li>
-                <li>CSS3 (flexbox, grid, animations, gradients)</li>
-                <li>JavaScript (ES6 modules, event delegation, SPA navigation)</li>
-                <li>JSON (dynamic data: products, categories, colors)</li>
-                <li>DALL-E (artificial intelligence used for pictures)</li>
-            </ul>
+            <section class="about-section">
+                <p class="about-intro">
+                    Clothify is a modern, student-built online clothing store designed to showcase
+                    clean UI, responsive layouts, JSON-powered data rendering, and single-page
+                    application navigation. Built as part of <strong>COMP 3612 – Web Development</strong>,
+                    the website demonstrates practical front-end engineering skills through
+                    dynamic interfaces and real-time content updates.
+                </p>
 
-            <h3>🧑‍🎓 About the Developer</h3>
-            <p>
-                Created by <strong>James Yap, Aarav Shaji</strong>, Computer Science students at 
-                Mount Royal University with an interest in UI/UX, game development, 
-                and building highly interactive web applications.
-            </p>
+                <h3 class="about-heading">Our Mission</h3>
+                <p class="about-text">
+                    Our mission is to create an elegant and intuitive shopping experience that feels
+                    fast, visually appealing, and easy to navigate. Every product is loaded directly
+                    from JSON data, ensuring a modular design and a clean separation of content from
+                    layout. We aim to mimic the structure of real e-commerce sites while maintaining
+                    readable and maintainable code.
+                </p>
 
-            <h3>📦 GitHub Repository</h3>
-            <p>
-                View the project code here:<br>
-                <a href="https://github.com/AaravShaji/COMP3612-Assign-2/tree/main" target="_blank">
-                    github.com
-                </a>
-            </p>
+                <h3 class="about-heading">Why Clothify?</h3>
+                <ul class="about-list">
+                    <li>Fully client-side SPA navigation with animated view transitions</li>
+                    <li>Dynamic product loading using JSON and JavaScript</li>
+                    <li>Clean component-based layout (header, footer, modals, views)</li>
+                    <li>Modern UI elements including gradients, modals, and animations</li>
+                    <li>Accessible design following good HTML semantics</li>
+                </ul>
 
-        </div>
+                <h3 class="about-heading">The Developers</h3>
+                <p class="about-text">
+                    Clothify was created by
+                    <strong>Aarav Shaji</strong> and <strong>James Yap</strong>,
+                    Computer Science students at Mount Royal University.
+                    With shared interests in software engineering, UI/UX design, and game development,
+                    our goal was to build something functional, polished, and academically strong.
+                </p>
 
-        <div class="about-footer">
-            <button id="aboutCloseBtn" class="modal-btn">Close</button>
-        </div>
+                <div class="about-team">
+                    <div class="team-card">
+                        <img src="images/pic2.jpg" alt="Aarav Profile">
+                        <h4>Aarav Shaji</h4>
+                        <p>Developer • UI/UX • Software Engineering Student</p>
+                    </div>
+                    <div class="team-card">
+                        <img src="images/pic1.jpg" alt="James Profile">
+                        <h4>James Yap</h4>
+                        <p>Developer • Designer • Game Dev Enthusiast</p>
+                    </div>
+                </div>
 
-    </dialog>
+                <h3 class="about-heading">Our Values</h3>
+                <p class="about-text">
+                    We believe in clean design, meaningful user interactions, and developing software
+                    that is simple to understand yet powerful in capability. Clothify represents the
+                    culmination of these values—modern design, strong structure, and purposeful coding.
+                </p>
 
-    <article id="view-cart" class="view">
-        <!-- CART CONTENT -->
-        <h2>Your Cart</h2>
-    </article>
+            </section>
 
-</main>
+        </article>
+        <!-- ABOUT CONTENT MODAL -->
+        <dialog id="aboutModal" class="about-modal">
+
+            <div class="about-header">
+                <h2>About This Project</h2>
+                <button id="aboutCloseX" class="about-close-x">✕</button>
+            </div>
+
+            <div class="about-content">
+                <p class="lead">
+                    <strong>Clothify</strong> is a dynamic single-page online clothing store built for
+                    <strong>COMP 3612 – Web Development for Computer Science</strong>.
+                    This site demonstrates JSON data loading, DOM manipulation, responsive layouts,
+                    modular JavaScript design, and SPA-style view routing.
+                </p>
+
+                <h3>🚀 Technologies Used</h3>
+                <ul>
+                    <li>HTML5 (semantic structure + dialog modal)</li>
+                    <li>CSS3 (flexbox, grid, animations, gradients)</li>
+                    <li>JavaScript (ES6 modules, event delegation, SPA navigation)</li>
+                    <li>JSON (dynamic data: products, categories, colors)</li>
+                    <li>DALL-E (artificial intelligence used for pictures)</li>
+                </ul>
+
+                <h3>🧑‍🎓 About the Developer</h3>
+                <p>
+                    Created by <strong>Aarav Shaji and James Yap</strong>, Computer Science students at
+                    Mount Royal University with an interest in UI/UX, game development,
+                    and building highly interactive web applications.
+                </p>
+
+                <h3>📦 GitHub Repository</h3>
+                <p>
+                    View the project code here:<br>
+                    <a href="https://github.com/AaravShaji/COMP3612-Assign-2/tree/main" target="_blank">
+                        github.com
+                    </a>
+                </p>
+
+            </div>
+
+            <div class="about-footer">
+                <button id="aboutCloseBtn" class="modal-btn">Close</button>
+            </div>
+
+        </dialog>
+
+        <article id="view-cart" class="view">
+            <!-- CART CONTENT -->
+            <h2>Your Cart</h2>
+        </article>
+
+    </main>
 
 
 
-<footer class="site-footer">
-    <p>© 2025 Clothify — Online Clothing Store</p>
-    <button id="aboutFooterBtn" class="footer-link">About This Project</button>
-</footer>
+    <footer class="site-footer">
+        <p>© 2025 Clothify — Online Clothing Store</p>
+        <button id="aboutFooterBtn" class="footer-link">About This Project</button>
+    </footer>
 </body>
+
 </html>
