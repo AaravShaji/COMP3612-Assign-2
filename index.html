@@ -5,10 +5,12 @@
 
     <link rel="stylesheet" href="css/header-footer.css">
     <link rel="stylesheet" href="css/hide-unhide.css">
+    <link rel="stylesheet" href="css/about-us-modal.css">
     <link rel="stylesheet" href="css/about-us.css">
 
     <script src="js/hide-unhide.js"></script>
-    <script src="js/about-us.js"></script>
+    <script src="js/about-us-modal.js"></script>
+    <script src="js/"></script>
 </head>
 
 <body>
@@ -59,56 +61,115 @@
 
     <article id="view-about" class="view">
         <!-- ABOUT CONTENT -->
-        <h2>About Clothify</h2>
+        <h2 class="about-page-title">About Clothify</h2>
 
-        <dialog id="aboutModal" class="about-modal">
+        <section class="about-section">
+            <p class="about-intro">
+                Clothify is a modern, student-built online clothing store designed to showcase 
+                clean UI, responsive layouts, JSON-powered data rendering, and single-page 
+                application navigation. Built as part of <strong>COMP 3612 – Web Development</strong>, 
+                the website demonstrates practical front-end engineering skills through 
+                dynamic interfaces and real-time content updates.
+            </p>
 
-            <div class="about-header">
-                <h2>About This Project</h2>
-                <button id="aboutCloseX" class="about-close-x">✕</button>
+            <h3 class="about-heading">Our Mission</h3>
+            <p class="about-text">
+                Our mission is to create an elegant and intuitive shopping experience that feels 
+                fast, visually appealing, and easy to navigate. Every product is loaded directly 
+                from JSON data, ensuring a modular design and a clean separation of content from 
+                layout. We aim to mimic the structure of real e-commerce sites while maintaining 
+                readable and maintainable code.
+            </p>
+
+            <h3 class="about-heading">Why Clothify?</h3>
+            <ul class="about-list">
+                <li>Fully client-side SPA navigation with animated view transitions</li>
+                <li>Dynamic product loading using JSON and JavaScript</li>
+                <li>Clean component-based layout (header, footer, modals, views)</li>
+                <li>Modern UI elements including gradients, modals, and animations</li>
+                <li>Accessible design following good HTML semantics</li>
+            </ul>
+
+            <h3 class="about-heading">The Developers</h3>
+            <p class="about-text">
+                Clothify was created by 
+                <strong>James Yap</strong> and <strong>Aarav Shaji</strong>, 
+                Computer Science students at Mount Royal University.  
+                With shared interests in software engineering, UI/UX design, and game development, 
+                our goal was to build something functional, polished, and academically strong.
+            </p>
+
+            <div class="about-team">
+                <div class="team-card">
+                    <img src="images/pic1.jpg" alt="James Profile">
+                    <h4>James Yap</h4>
+                    <p>Developer • Designer • Game Dev Enthusiast</p>
+                </div>
+
+                <div class="team-card">
+                    <img src="images/pic2.jpg" alt="Aarav Profile">
+                    <h4>Aarav Shaji</h4>
+                    <p>Developer • UI/UX • Software Engineering Student</p>
+                </div>
             </div>
 
-            <div class="about-content">
-                <p class="lead">
-                    <strong>Clothify</strong> is a dynamic single-page online clothing store built for 
-                    <strong>COMP 3612 – Web Development for Computer Science</strong>.  
-                    This site demonstrates JSON data loading, DOM manipulation, responsive layouts, 
-                    modular JavaScript design, and SPA-style view routing.
-                </p>
+            <h3 class="about-heading">Our Values</h3>
+            <p class="about-text">
+                We believe in clean design, meaningful user interactions, and developing software 
+                that is simple to understand yet powerful in capability. Clothify represents the 
+                culmination of these values—modern design, strong structure, and purposeful coding.
+            </p>
 
-                <h3>🚀 Technologies Used</h3>
-                <ul>
-                    <li>HTML5 (semantic structure + dialog modal)</li>
-                    <li>CSS3 (flexbox, grid, animations, gradients)</li>
-                    <li>JavaScript (ES6 modules, event delegation, SPA navigation)</li>
-                    <li>JSON (dynamic data: products, categories, colors)</li>
-                    <li>DALL-E (artificial intelligence used for pictures)</li>
-                </ul>
-
-                <h3>🧑‍🎓 About the Developer</h3>
-                <p>
-                    Created by <strong>James Yap, Aarav Shaji</strong>, Computer Science students at 
-                    Mount Royal University with an interest in UI/UX, game development, 
-                    and building highly interactive web applications.
-                </p>
-
-                <h3>📦 GitHub Repository</h3>
-                <p>
-                    View the project code here:<br>
-                    <a href="https://github.com/AaravShaji/COMP3612-Assign-2/tree/main" target="_blank">
-                        github.com
-                    </a>
-                </p>
-
-            </div>
-
-            <div class="about-footer">
-                <button id="aboutCloseBtn" class="modal-btn">Close</button>
-            </div>
-
-        </dialog>
+        </section>
 
     </article>
+    <!-- ABOUT CONTENT MODAL -->
+    <dialog id="aboutModal" class="about-modal">
+
+        <div class="about-header">
+            <h2>About This Project</h2>
+            <button id="aboutCloseX" class="about-close-x">✕</button>
+        </div>
+
+        <div class="about-content">
+            <p class="lead">
+                <strong>Clothify</strong> is a dynamic single-page online clothing store built for 
+                <strong>COMP 3612 – Web Development for Computer Science</strong>.  
+                This site demonstrates JSON data loading, DOM manipulation, responsive layouts, 
+                modular JavaScript design, and SPA-style view routing.
+            </p>
+
+            <h3>🚀 Technologies Used</h3>
+            <ul>
+                <li>HTML5 (semantic structure + dialog modal)</li>
+                <li>CSS3 (flexbox, grid, animations, gradients)</li>
+                <li>JavaScript (ES6 modules, event delegation, SPA navigation)</li>
+                <li>JSON (dynamic data: products, categories, colors)</li>
+                <li>DALL-E (artificial intelligence used for pictures)</li>
+            </ul>
+
+            <h3>🧑‍🎓 About the Developer</h3>
+            <p>
+                Created by <strong>James Yap, Aarav Shaji</strong>, Computer Science students at 
+                Mount Royal University with an interest in UI/UX, game development, 
+                and building highly interactive web applications.
+            </p>
+
+            <h3>📦 GitHub Repository</h3>
+            <p>
+                View the project code here:<br>
+                <a href="https://github.com/AaravShaji/COMP3612-Assign-2/tree/main" target="_blank">
+                    github.com
+                </a>
+            </p>
+
+        </div>
+
+        <div class="about-footer">
+            <button id="aboutCloseBtn" class="modal-btn">Close</button>
+        </div>
+
+    </dialog>
 
     <article id="view-cart" class="view">
         <!-- CART CONTENT -->
