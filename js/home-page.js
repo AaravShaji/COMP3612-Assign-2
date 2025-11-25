@@ -1,3 +1,7 @@
+/* ============================= */
+/* HOME PAGE JAVASCRIPT */
+/* ============================= */
+
 document.addEventListener("DOMContentLoaded", () => {
 
     const featuredCards = document.querySelectorAll(".featured-grid .product-preview");

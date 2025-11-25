@@ -1,3 +1,7 @@
+/* ============================= */
+/* SINGLE PRODUCT VIEW JAVASCRIPT */
+/* ============================= */
+
 document.addEventListener("DOMContentLoaded", () => {
 
     let allProducts = [];

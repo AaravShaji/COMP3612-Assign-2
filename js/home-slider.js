@@ -1,3 +1,7 @@
+/* ============================= */
+/* HOME SLIDER ANIMATION JAVASCRIPT */
+/* ============================= */
+
 document.addEventListener("DOMContentLoaded", () => {
 
     const track = document.getElementById("heroSliderTrack");

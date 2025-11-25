@@ -1,3 +1,7 @@
+/* ============================= */
+/* CART VIEW JAVASCRIPT */
+/* ============================= */
+
 document.addEventListener("DOMContentLoaded", () => {
 
     const cartContainer = document.getElementById("cartContainer");
@@ -15,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const toast = document.getElementById("cartToast");
 
-    // CART STORAGE
+    // Cart storage
     let cart = JSON.parse(localStorage.getItem("CLOTHIFY_CART") || "[]");
 
     function saveCart() {
@@ -30,9 +34,9 @@ document.addEventListener("DOMContentLoaded", () => {
     updateBadge();
 
 
-    /* ==========================
-       ADD TO CART (Called globally)
-    ========================== */
+    // ==================================================
+    // Add to Cart (called globally)
+    // ==================================================
     window.addToCart = function(product, qty = 1, size = null, color = null) {
 
         const existing = cart.find(
@@ -54,9 +58,9 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
 
-    /* ==========================
-       RENDER CART VIEW
-    ========================== */
+    // ==================================================
+    // Render Cart View
+    // ==================================================
     window.renderCartView = function() {
 
         if (cart.length === 0) {
@@ -130,9 +134,9 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
 
-    /* ==========================
-       UPDATE SUMMARY
-    ========================== */
+    // ==================================================
+    // Update Summary
+    // ==================================================
     function updateSummary(merchTotal) {
 
         sumMerch.textContent = `$${merchTotal.toFixed(2)}`;
@@ -152,9 +156,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* ==========================
-       SHIPPING CALCULATOR
-    ========================== */
+    // ==================================================
+    // Shipping Calculator
+    // ==================================================
     function calculateShipping(total) {
         if (total === 0) return 0;
         if (total >= 500) return 0;
@@ -173,9 +177,9 @@ document.addEventListener("DOMContentLoaded", () => {
     shipDestination.addEventListener("change", () => renderCartView());
 
 
-    /* ==========================
-       CHECKOUT
-    ========================== */
+    // ==================================================
+    // Checkout
+    // ==================================================
     checkoutBtn.addEventListener("click", () => {
 
         const shipWarn = document.getElementById("shipWarning");
@@ -223,9 +227,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    /* ==========================
-       Toast Message
-    ========================== */
+    // ==================================================
+    // Toast Message
+    // ==================================================
     function showToast(msg) {
         toast.textContent = msg;
         toast.classList.add("show");

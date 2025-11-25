@@ -1,3 +1,7 @@
+/* ============================= */
+/* BROWSE VIEW JAVASCRIPT */
+/* ============================= */
+
 document.addEventListener("DOMContentLoaded", () => {
 
     // DOM references
@@ -91,6 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return true;
     }
 
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
     function sortProducts(items, sortBy) {
         const sorted = [...items];
         if (sortBy === "price") sorted.sort((a, b) => a.price - b.price);
@@ -159,8 +164,9 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     }
-
-    // animated expanding filters
+    // ==================================================
+    // Animated expanding filters
+    // ==================================================
     document.querySelectorAll(".filter-toggle").forEach(toggle => {
         toggle.addEventListener("click", () => {
             const id = toggle.dataset.filterSection;
