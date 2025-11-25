@@ -29,7 +29,7 @@
         <nav class="navbar-container">
 
             <div class="nav-left">
-                <h1 class="logo" data-view="home"><img src = "images/logo.jpg"/></h1>
+                <h1 class="logo" data-view="home"><img src="images/logo.jpg" /></h1>
             </div>
 
             <div class="nav-center">
@@ -66,11 +66,7 @@
                 </div>
                 <div class="hero-slider">
                     <div class="slider-window">
-                        <div class="slider-track">
-                            <img id="heroSliderTrack"/>
-                            <img id="heroSliderTrack"/>
-                            <img id="heroSliderTrack"/>
-                        </div>
+                        <div class="slider-track" id="heroSliderTrack"></div>
                     </div>
                     <div class="slider-bar">
                         <div class="slider-bar-fill"></div>
@@ -105,8 +101,7 @@
         </article>
 
         <article id="view-women" class="view">
-            <!-- WOMEN CONTENT -->
-            <!-- Hero -->
+            <!-- WOMEN CONTENT + Hero -->
             <section class="gender-hero gender-hero-women">
                 <div class="gender-hero-text">
                     <h2>Women’s Collection</h2>
@@ -116,7 +111,6 @@
             </section>
             <!-- Categories grid -->
             <section class="gender-categories">
-                <!-- each card could later trigger Browse view via data-* -->
                 <button class="category-card" data-view="browse" data-gender="women" data-category="outerwear">
                     <div class="category-thumb"><span>placeholder</span></div>
                     <span class="category-label">Outerwear</span>
@@ -160,8 +154,7 @@
         </article>
 
         <article id="view-men" class="view">
-            <!-- MEN CONTENT -->
-            <!-- Hero -->
+            <!-- MEN CONTENT + Hero -->
             <section class="gender-hero gender-hero-men">
                 <div class="gender-hero-text">
                     <h2>Men’s Collection</h2>
@@ -176,37 +169,30 @@
                     <div class="category-thumb"><span>placeholder</span></div>
                     <span class="category-label">Outerwear</span>
                 </button>
-
                 <button class="category-card" data-view="browse" data-gender="men" data-category="shirts">
                     <div class="category-thumb"><span>placeholder</span></div>
                     <span class="category-label">Shirts</span>
                 </button>
-
                 <button class="category-card" data-view="browse" data-gender="men" data-category="denim">
                     <div class="category-thumb"><span>placeholder</span></div>
                     <span class="category-label">Denim</span>
                 </button>
-
                 <button class="category-card" data-view="browse" data-gender="men" data-category="suiting">
                     <div class="category-thumb"><span>placeholder</span></div>
-                    <span class="category-label">Suiting</span>
+                    <span class="category-label">Suits</span>
                 </button>
-
                 <button class="category-card" data-view="browse" data-gender="men" data-category="athleisure">
                     <div class="category-thumb"><span>placeholder</span></div>
                     <span class="category-label">Athleisure</span>
                 </button>
-
                 <button class="category-card" data-view="browse" data-gender="men" data-category="accessories">
                     <div class="category-thumb"><span>placeholder</span></div>
                     <span class="category-label">Accessories</span>
                 </button>
-
                 <button class="category-card" data-view="browse" data-gender="men" data-category="footwear">
                     <div class="category-thumb"><span>placeholder</span></div>
                     <span class="category-label">Footwear</span>
                 </button>
-
                 <button class="category-card" data-view="browse" data-gender="men" data-category="essentials">
                     <div class="category-thumb"><span>placeholder</span></div>
                     <span class="category-label">Essentials</span>
@@ -267,35 +253,29 @@
                             Colors ▼
                         </button>
                         <div class="filter-options" id="filter-color">
-
                             <label class="color-option">
                                 <input type="checkbox" value="Beige" data-filter="color">
                                 <span class="color-swatch" style="background:#F5F5DC"></span> Beige
                             </label>
-
                             <label class="color-option">
                                 <input type="checkbox" value="Black" data-filter="color">
                                 <span class="color-swatch" style="background:#000000"></span> Black
                             </label>
-
                             <label class="color-option">
                                 <input type="checkbox" value="Blue" data-filter="color">
                                 <span class="color-swatch" style="background:#1E3A8A"></span> Blue
                             </label>
-
                             <label class="color-option">
                                 <input type="checkbox" value="White" data-filter="color">
-                                <span class="color-swatch" style="background:#FFFFFF; border:1px solid #ccc;"></span> White
+                                <span class="color-swatch" style="background:#FFFFFF; border:1px solid #ccc;"></span>
+                                White
                             </label>
-
                         </div>
                     </div>
-
                 </aside>
 
                 <!-- RIGHT CONTENT AREA -->
                 <section class="browse-results">
-
                     <!-- SORT BAR -->
                     <div class="browse-sort-bar">
                         <span>Sort</span>
@@ -305,17 +285,13 @@
                             <option value="category">Category</option>
                         </select>
                     </div>
-
                     <!-- ACTIVE FILTER TAGS -->
                     <div class="active-filters">
                         <button id="clearAllFilters" class="clear-filters">X Clear All</button>
                         <div id="filterTagsContainer"></div>
                     </div>
-
                     <!-- PRODUCT GRID -->
-                    <div id="browseGrid" class="browse-grid">
-                        <!-- JS will inject product blocks here -->
-                    </div>
+                    <div id="browseGrid" class="browse-grid"></div>
 
                 </section>
 
@@ -515,8 +491,8 @@
             </div>
         </article>
 
-<!-- Toast popup -->
-<div id="cartToast" class="toast">Item added to cart!</div>
+        <!-- Toast popup -->
+        <div id="cartToast" class="toast">Item added to cart!</div>
 
 
     </main>
