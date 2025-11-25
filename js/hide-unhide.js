@@ -29,4 +29,26 @@ document.addEventListener("DOMContentLoaded", () => {
         showView(target.dataset.view);
     });
 
+    // add animations for clicking navbar 
+    document.querySelectorAll(".nav-link").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const view = btn.dataset.view;
+
+            document.querySelectorAll(".view").forEach(v => {
+                v.classList.remove("active", "gender-fade");
+            });
+
+            const target = document.getElementById(`view-${view}`);
+            if (!target) return;
+
+            target.classList.add("active");
+
+            // Apply fade animation ONLY to gender pages
+            if (view === "women" || view === "men") {
+                target.classList.add("gender-fade");
+            }
+        });
+    });
+
+
 });

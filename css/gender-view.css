@@ -137,3 +137,17 @@
         font-size: 1.8rem;
     }
 }
+
+/* Fade-in animation for gender pages */
+.gender-fade {
+    opacity: 0;
+    transform: translateY(25px);
+    animation: genderFadeIn 0.45s ease-out forwards;
+}
+
+@keyframes genderFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
