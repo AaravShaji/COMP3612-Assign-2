@@ -81,6 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
          *   - _a.jpg
          *   - _b.jpg
          * Clicking a thumbnail replaces the main image.
+         * https://forum.freecodecamp.org/t/its-this-a-good-way-to-create-a-image-loop/323175
          */
         ["a", "b"].forEach(letter => {
             const img = document.createElement("img");

@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     placeholder.remove();
                 }
 
-                thumb.style.backgroundImage = `url(images/${product.id}_a.jpg)`;
+                thumb.style.backgroundImage = `url(images/${product.id.toLowerCase()}_a.jpg)`;
                 thumb.style.backgroundSize = "cover";
                 thumb.style.backgroundPosition = "center";
                 thumb.style.backgroundRepeat = "no-repeat";

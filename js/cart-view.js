@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
             row.className = "cart-item fadeIn";
 
             row.innerHTML = `
-                <img src="images/${item.id}_a.jpg" class="cart-thumb">
+                <img src="images/${item.id.toLowerCase()}_a.jpg" class="cart-thumb">
 
                 <div class="cart-item-info">
                     <h4>${item.name}</h4>
