@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         if (state.filters.color.size > 0) {
-            const colors = prod.colors?.map(c => c.name) || [];
+            const colors = prod.color?.map(c => c.name) || [];
             const matchColor = colors.some(c => state.filters.color.has(c));
             if (!matchColor) return false;
         }

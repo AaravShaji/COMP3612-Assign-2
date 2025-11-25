@@ -224,3 +224,8 @@
     border: 2px solid #d32f2f !important;
     background: #ffe8e8;
 }
+
+.disabled-checkout {
+    opacity: 0.4;
+    cursor: not-allowed;
+}

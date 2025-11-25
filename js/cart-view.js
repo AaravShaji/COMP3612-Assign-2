@@ -85,10 +85,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (cart.length === 0) {
             cartContainer.innerHTML = `<p class="empty-cart">Your cart is empty.</p>`;
+
+            // Disable shipping + destination
+            shipMethod.disabled = true;
+            shipDestination.disabled = true;
+
+            // Clear summary
             updateSummary(0);
+
+            // Disable checkout
             checkoutBtn.disabled = true;
+            checkoutBtn.classList.add("disabled-checkout");
+
             return;
         }
+        // Enable shipping + checkout when items exist
+        shipMethod.disabled = false;
+        shipDestination.disabled = false;
+        checkoutBtn.disabled = false;
+        checkoutBtn.classList.remove("disabled-checkout");
 
         checkoutBtn.disabled = false;
         cartContainer.innerHTML = "";
@@ -109,7 +124,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 <div class="cart-item-info">
                     <h4>${item.name}</h4>
-                    <p class="small-label">Color: <strong>${item.color === "default" ? "Default" : item.color}</strong></p>
+                    <p class="small-label">Color: <strong>${
+                        item.color === "default"
+                            ? (ClothifyData.getProductById(item.id).color?.[0]?.name || "Default")
+                            : item.color
+                    }</strong></p>
                     <p class="small-label">Size: <strong>${item.size === "default" ? "Default" : item.size}</strong></p>
 
                 </div>
