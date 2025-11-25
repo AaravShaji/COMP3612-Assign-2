@@ -27,7 +27,9 @@
     background: #fff;
     box-shadow: 0 3px 10px rgba(0,0,0,0.08);
     transition: transform 0.25s ease, box-shadow 0.25s ease;
+    column-gap: 20px;   /* add spacing between image and text */
 }
+
 
 .cart-item:hover {
     transform: translateY(-4px);
@@ -54,6 +56,7 @@
 /************************************
     PRODUCT INFO
 ************************************/
+
 .cart-item-info h4 {
     margin: 0;
     font-size: 1.05rem;
