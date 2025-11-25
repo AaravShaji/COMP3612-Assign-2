@@ -184,7 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
             card.onclick = () => openProductView(r.id);
 
             card.innerHTML = `
-                <img src="images/${r.id}_a.jpg">
+                <img src="images/${r.id.toLowerCase()}_a.jpg">
                 <h4>${r.name}</h4>
                 <p>$${r.price}</p>
             `;
