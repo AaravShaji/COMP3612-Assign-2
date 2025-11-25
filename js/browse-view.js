@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
        FILTER CHECKBOX HANDLING
        - Each checkbox modifies a specific Set in state.filters.
        - After change, the grid is re-rendered.
+       https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
        ============================================================ */
     filterCheckboxes.forEach(cb => {
         cb.addEventListener("change", () => {
