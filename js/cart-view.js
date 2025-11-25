@@ -65,10 +65,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (cart.length === 0) {
             cartContainer.innerHTML = `<p class="empty-cart">Your cart is empty.</p>`;
+
+            // Disable shipping + destination
+            shipMethod.disabled = true;
+            shipDestination.disabled = true;
+
+            // Clear summary
             updateSummary(0);
+
+            // Disable checkout
             checkoutBtn.disabled = true;
+            checkoutBtn.classList.add("disabled-checkout");
+
             return;
         }
+        // Enable shipping + checkout when items exist
+        shipMethod.disabled = false;
+        shipDestination.disabled = false;
+        checkoutBtn.disabled = false;
+        checkoutBtn.classList.remove("disabled-checkout");
 
         checkoutBtn.disabled = false;
         cartContainer.innerHTML = "";
