@@ -225,7 +225,10 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("view-home").classList.add("active");
     });
 
-
+    // Show cart contents whenever Cart navbar button is pressed
+    document.querySelector(".cart-btn").addEventListener("click", () => {
+        renderCartView();
+    });
 
     // ==================================================
     // Toast Message
