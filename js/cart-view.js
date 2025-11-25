@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==================================================
     // Add to Cart (called globally)
     // ==================================================
-    window.addToCart = function(product, qty = 1, size = null, color = null) {
+    window.addToCart = function(product, qty = 1, size = "default", color = "default") {
 
         const existing = cart.find(
             c => c.id === product.id && c.size === size && c.color === color
@@ -48,8 +48,8 @@ document.addEventListener("DOMContentLoaded", () => {
             id: product.id,
             name: product.name,
             price: product.price,
-            size,
-            color,
+            size: size || "default",
+            color: color || "default",
             qty
         });
 
@@ -89,8 +89,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 <div class="cart-item-info">
                     <h4>${item.name}</h4>
-                    <p class="small-label">Color: <strong>${item.color || "-"}</strong></p>
-                    <p class="small-label">Size: <strong>${item.size || "-"}</strong></p>
+                    <p class="small-label">Color: <strong>${item.color === "default" ? "Default" : item.color}</strong></p>
+                    <p class="small-label">Size: <strong>${item.size === "default" ? "Default" : item.size}</strong></p>
+
                 </div>
 
                 <p class="cart-price">$${item.price.toFixed(2)}</p>
