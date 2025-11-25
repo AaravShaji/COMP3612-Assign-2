@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const API_URL =
-        "https://gist.githubusercontent.com/rconnolly/d37a491b50203d66d043c26f33dbd798/raw/37b5b68c527ddbe824eaed12073d266d5455432a/clothing-compact.json";
 
     let allProducts = [];
 
@@ -19,20 +17,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const addToCartBtn = document.getElementById("productAddToCart");
     const relatedContainer = document.getElementById("relatedProducts");
 
-    fetch(API_URL)
-        .then(res => res.json())
-        .then(data => {
-            allProducts = data;
-        });
+    // Load product list
+    ClothifyData.loadProducts().then(data => {
+        allProducts = data;
+    });
 
     // =====================================================
-    // CALL THIS WHEN A PRODUCT CARD IS CLICKED
+    // OPEN PRODUCT VIEW
     // =====================================================
-    window.openProductView = function (productId) {
-        const prod = allProducts.find(p => p.id === productId);
+    window.openProductView = function(productId) {
+
+        const prod = ClothifyData.getProductById(productId);
         if (!prod) return;
 
-        // Switch view
         document.querySelectorAll(".view").forEach(v => v.classList.remove("active"));
         viewProduct.classList.add("active");
 
@@ -44,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
             ${prod.name}
         `;
 
-        // Main info
+        // Details
         titleEl.textContent = prod.name;
         priceEl.textContent = `$${prod.price}`;
         descEl.textContent = prod.description;
@@ -85,39 +82,36 @@ document.addEventListener("DOMContentLoaded", () => {
             colorContainer.appendChild(swatch);
         });
 
-        // Related products
+        // Related
         renderRelatedProducts(prod);
 
-        // Add to cart
+        // ADD TO CART
         addToCartBtn.onclick = () => {
             const qty = parseInt(qtyEl.value) || 1;
 
             const selectedSizeBtn = document.querySelector("#productSizes button.active");
             const size = selectedSizeBtn ? selectedSizeBtn.textContent : null;
 
-            // No size selected for a product with sizes → prevent adding
             if (prod.sizes && prod.sizes.length > 0 && !size) {
                 showToast("Select a size first!");
                 return;
             }
 
-            // Colors (use first color if none selected)
-            const color = prod.colors && prod.colors.length > 0
+            const color = prod.colors?.length > 0
                 ? prod.colors[0].name
                 : null;
 
             addToCart(prod, qty, size, color);
         };
-
     };
 
     // =====================================================
-    // Related Products (same category OR same gender)
+    // Related Products
     // =====================================================
     function renderRelatedProducts(prod) {
         relatedContainer.innerHTML = "";
 
-        const related = allProducts.filter(
+        const related = ClothifyData.getAllProducts().filter(
             p =>
                 p.id !== prod.id &&
                 (p.category === prod.category || p.gender === prod.gender)
@@ -137,9 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // =====================================================
-    // Toast Notification
-    // =====================================================
+    // Toast
     function showToast(message) {
         const toast = document.getElementById("toast");
         toast.textContent = message;
