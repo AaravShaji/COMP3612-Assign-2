@@ -160,6 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // animated expanding filters
     document.querySelectorAll(".filter-toggle").forEach(toggle => {
         toggle.addEventListener("click", () => {
             const id = toggle.dataset.filterSection;
