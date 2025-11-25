@@ -159,4 +159,14 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     }
+
+    document.querySelectorAll(".filter-toggle").forEach(toggle => {
+        toggle.addEventListener("click", () => {
+            const id = toggle.dataset.filterSection;
+            const section = document.getElementById("filter-" + id);
+
+            section.classList.toggle("open");
+        });
+    });
+
 });
