@@ -27,14 +27,17 @@ document.addEventListener("DOMContentLoaded", () => {
             const desc = card.querySelector("p:not(.product-price)");
             if (desc) desc.textContent = prod.description || "Modern • Stylish";
 
-            const price = card.querySelector(".product-price");
-            price.textContent = `$${prod.price}`;
+                // Update product image based on ID
+                const img = card.querySelector("img");
+                img.src = `images/${prod.id}_a.jpg`;
+                img.alt = prod.name;
 
-            const img = card.querySelector("img");
-            img.src = `images/${prod.id}_a.jpg`;
-            img.alt = prod.name;
-        });
-    })
+                // ⭐ MAKE CARD CLICKABLE → OPEN PRODUCT VIEW
+                card.style.cursor = "pointer";
+                card.addEventListener("click", () => openProductView(prod.id));
+                img.addEventListener("click", () => openProductView(prod.id));
+            });
+        })
         .catch(err => console.error("ERROR LOADING FEATURED PRODUCTS:", err));
 });
 
