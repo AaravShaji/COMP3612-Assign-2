@@ -2,22 +2,31 @@
 /* HIDE AND UNHIDE ARTICLES JAVASCRIPT */
 /* ============================= */
 
-document.addEventListener("DOMContentLoaded", ()=>{
+document.addEventListener("DOMContentLoaded", () => {
 
-function showView(viewName) {
-    // Hide all
-    document.querySelectorAll(".view").forEach(v => v.classList.remove("active"));
+    function showView(viewName) {
+        // Hide all
+        document.querySelectorAll(".view").forEach(v => v.classList.remove("active"));
 
-    // Show selected view
-    const view = document.getElementById(`view-${viewName}`);
-    if (view) view.classList.add("active");
-}
+        // Show selected view
+        const view = document.getElementById(`view-${viewName}`);
+        if (view) view.classList.add("active");
+    }
 
-document.querySelector(".navbar-container").addEventListener("click", (e) => {
-    const target = e.target.closest("[data-view]");
-    if (!target) return;
-    showView(target.dataset.view);
-});
+    document.querySelector(".navbar-container").addEventListener("click", (e) => {
+        const target = e.target.closest("[data-view]");
+        if (!target) return;
+        showView(target.dataset.view);
+    });
 
+    document.addEventListener("click", (e) => {
+        const target = e.target.closest("[data-view]");
+        if (!target) return;
+
+        // Prevent double handling for navbar
+        if (e.target.closest(".navbar-container")) return;
+
+        showView(target.dataset.view);
+    });
 
 });
