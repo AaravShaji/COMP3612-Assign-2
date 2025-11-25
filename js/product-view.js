@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Colors
         colorContainer.innerHTML = "";
-        (prod.colors || []).forEach(color => {
+        (prod.color || []).forEach(color => {
             const swatch = document.createElement("span");
             swatch.className = "color-swatch";
             swatch.style.background = color.hex;
