@@ -2,8 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const track = document.getElementById("heroSliderTrack");
 
-    ClothifyData.loadProducts().then(products => {
-        const shuffled = products
+    ClothifyData.loadProducts().then(products => { 
+        const shuffled = products //credit to: https://medium.com/@apestruy/shuffling-an-array-in-javascript-8fcbc5ff12c7
             .map(p => ({ p, rnd: Math.random() }))
             .sort((a, b) => a.rnd - b.rnd)
             .map(x => x.p);
