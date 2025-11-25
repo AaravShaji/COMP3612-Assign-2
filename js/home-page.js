@@ -45,6 +45,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 const img = card.querySelector("img");
                 img.src = `images/${prod.id}_a.jpg`;
                 img.alt = prod.name;
+
+                // ⭐ MAKE CARD CLICKABLE → OPEN PRODUCT VIEW
+                card.style.cursor = "pointer";
+                card.addEventListener("click", () => openProductView(prod.id));
+                img.addEventListener("click", () => openProductView(prod.id));
             });
         })
         .catch(err => console.error("ERROR LOADING FEATURED PRODUCTS:", err));

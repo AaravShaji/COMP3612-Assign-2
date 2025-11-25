@@ -1,0 +1,139 @@
+/* ========= PRODUCT VIEW ========= */
+.product-layout {
+    display: flex;
+    gap: 30px;
+    padding: 20px;
+}
+
+.product-images {
+    width: 45%;
+}
+
+.product-main-img {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.product-thumbs {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.product-thumb {
+    width: 80px;
+    height: 80px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    object-fit: cover;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.product-thumb:hover {
+    transform: scale(1.05);
+}
+
+.product-info {
+    width: 50%;
+}
+
+.product-info h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.product-price {
+    font-size: 1.4rem;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+.product-sizes button,
+.product-colors .color-swatch {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.product-sizes button {
+    padding: 5px 12px;
+    border: 1px solid #999;
+    background: white;
+    border-radius: 6px;
+}
+
+.product-sizes button.active {
+    background: #467cf4;
+    color: white;
+    border-color: #467cf4;
+}
+
+.color-swatch {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.add-cart-btn.big {
+    margin-top: 20px;
+    padding: 12px 18px;
+    background: #467cf4;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* Related products */
+.related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.related-card {
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.related-card img {
+    width: 100%;
+    border-radius: 6px;
+}
+
+/* Breadcrumb */
+.product-breadcrumb {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+}
+
+.product-breadcrumb a {
+    color: #467cf4;
+    text-decoration: none;
+    margin-right: 5px;
+}
+
+/* Toast Notification */
+.toast {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #333;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 6px;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.4s;
+}
+
+.toast.show {
+    opacity: 1;
+}

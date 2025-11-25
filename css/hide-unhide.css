@@ -14,3 +14,51 @@
     color: var(--active-blue);
     font-weight: bold;
 }
+
+/* Applies to all product cards */
+.product-preview,
+.browse-product-card,
+.related-card {
+    transition: transform 0.25s ease, 
+                box-shadow 0.25s ease,
+                opacity 0.25s ease;
+    cursor: pointer;
+}
+
+/* Hover animation */
+.product-preview:hover,
+.browse-product-card:hover,
+.related-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 12px 22px rgba(0, 0, 0, 0.18);
+}
+
+/* Image hover shine effect (optional but looks very nice) */
+.product-preview img,
+.browse-product-card img,
+.related-card img {
+    transition: transform 0.3s ease;
+}
+
+/* subtle fade-in on load */
+.product-preview:hover img,
+.browse-product-card:hover img,
+.related-card:hover img {
+    transform: scale(1.06);
+}
+
+.card-fade-in {
+    animation: fadeInUp 0.4s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

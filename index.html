@@ -10,11 +10,17 @@
     <link rel="stylesheet" href="css/about-us.css">
     <link rel="stylesheet" href="css/home-view.css">
     <link rel="stylesheet" href="css/gender-view.css">
+    <link rel="stylesheet" href="css/browse-view.css">
+    <link rel="stylesheet" href="css/product-view.css">
+    <link rel="stylesheet" href="css/cart-view.css">
 
     <script src="js/hide-unhide.js"></script>
     <script src="js/about-us-modal.js"></script>
     <script src="js/home-slider.js"></script>
     <script src="js/home-page.js"></script>
+    <script src="js/browse-view.js"></script>
+    <script src="js/product-view.js"></script>
+    <script src="js/cart-view.js"></script>
 </head>
 
 <body>
@@ -209,8 +215,158 @@
 
         <article id="view-browse" class="view">
             <!-- BROWSE CONTENT -->
-            <h2>Browse Products</h2>
+
+            <h2 class="browse-title">Browse</h2>
+
+            <div class="browse-container">
+
+                <!-- LEFT SIDEBAR -->
+                <aside class="browse-sidebar">
+                    <h3 class="sidebar-heading">Departments</h3>
+
+                    <!-- GENDER FILTER -->
+                    <div class="filter-group">
+                        <button class="filter-toggle" data-filter-section="gender">
+                            Gender ▼
+                        </button>
+                        <div class="filter-options" id="filter-gender">
+                            <label><input type="checkbox" value="Female" data-filter="gender"> Female</label>
+                            <label><input type="checkbox" value="Male" data-filter="gender"> Male</label>
+                        </div>
+                    </div>
+
+                    <!-- CATEGORY FILTER -->
+                    <div class="filter-group">
+                        <button class="filter-toggle" data-filter-section="category">
+                            Category ▼
+                        </button>
+                        <div class="filter-options" id="filter-category">
+                            <label><input type="checkbox" value="Bottoms" data-filter="category"> Bottoms</label>
+                            <label><input type="checkbox" value="Dresses" data-filter="category"> Dresses</label>
+                            <label><input type="checkbox" value="Outerwear" data-filter="category"> Outerwear</label>
+                            <label><input type="checkbox" value="Tops" data-filter="category"> Tops</label>
+                        </div>
+                    </div>
+
+                    <!-- SIZE FILTER -->
+                    <div class="filter-group">
+                        <button class="filter-toggle" data-filter-section="size">
+                            Size ▼
+                        </button>
+                        <div class="filter-options" id="filter-size">
+                            <label><input type="checkbox" value="Small" data-filter="size"> Small</label>
+                            <label><input type="checkbox" value="Medium" data-filter="size"> Medium</label>
+                            <label><input type="checkbox" value="Large" data-filter="size"> Large</label>
+                        </div>
+                    </div>
+
+                    <!-- COLOR FILTER -->
+                    <div class="filter-group">
+                        <button class="filter-toggle" data-filter-section="color">
+                            Colors ▼
+                        </button>
+                        <div class="filter-options" id="filter-color">
+
+                            <label class="color-option">
+                                <input type="checkbox" value="Beige" data-filter="color">
+                                <span class="color-swatch" style="background:#F5F5DC"></span> Beige
+                            </label>
+
+                            <label class="color-option">
+                                <input type="checkbox" value="Black" data-filter="color">
+                                <span class="color-swatch" style="background:#000000"></span> Black
+                            </label>
+
+                            <label class="color-option">
+                                <input type="checkbox" value="Blue" data-filter="color">
+                                <span class="color-swatch" style="background:#1E3A8A"></span> Blue
+                            </label>
+
+                            <label class="color-option">
+                                <input type="checkbox" value="White" data-filter="color">
+                                <span class="color-swatch" style="background:#FFFFFF; border:1px solid #ccc;"></span> White
+                            </label>
+
+                        </div>
+                    </div>
+
+                </aside>
+
+                <!-- RIGHT CONTENT AREA -->
+                <section class="browse-results">
+
+                    <!-- SORT BAR -->
+                    <div class="browse-sort-bar">
+                        <span>Sort</span>
+                        <select id="browse-sort">
+                            <option value="name">Product Name (A–Z)</option>
+                            <option value="price">Price (Low → High)</option>
+                            <option value="category">Category</option>
+                        </select>
+                    </div>
+
+                    <!-- ACTIVE FILTER TAGS -->
+                    <div class="active-filters">
+                        <button id="clearAllFilters" class="clear-filters">X Clear All</button>
+                        <div id="filterTagsContainer"></div>
+                    </div>
+
+                    <!-- PRODUCT GRID -->
+                    <div id="browseGrid" class="browse-grid">
+                        <!-- JS will inject product blocks here -->
+                    </div>
+
+                </section>
+
+            </div>
+
+            
         </article>
+
+        <article id="view-product" class="view">
+            <nav class="product-breadcrumb" id="productBreadcrumb"></nav>
+
+            <div class="product-layout">
+                <!-- LEFT SIDE: Images -->
+                <div class="product-images">
+                    <img id="productMainImg" class="product-main-img" src="" alt="Product Image">
+
+                    <div class="product-thumbs" id="productThumbs"></div>
+                </div>
+
+                <!-- RIGHT SIDE: Info -->
+                <div class="product-info">
+                    <h2 id="productTitle"></h2>
+                    <p class="product-price" id="productPrice"></p>
+                    <p class="product-desc" id="productDescription"></p>
+
+                    <p><strong>Material:</strong> <span id="productMaterial"></span></p>
+
+                    <div class="product-sizes">
+                        <p><strong>Size:</strong></p>
+                        <div id="productSizes"></div>
+                    </div>
+
+                    <div class="product-colors">
+                        <p><strong>Colors:</strong></p>
+                        <div id="productColors"></div>
+                    </div>
+
+                    <div class="product-quantity">
+                        <p><strong>Quantity:</strong></p>
+                        <input type="number" id="productQty" min="1" value="1">
+                    </div>
+
+                    <button id="productAddToCart" class="add-cart-btn big">+ Add to Cart</button>
+                </div>
+            </div>
+
+            <h3 class="related-title">Related Products</h3>
+            <div id="relatedProducts" class="related-grid"></div>
+        </article>
+
+        <!-- Toast notification -->
+        <div id="toast" class="toast">Added to cart!</div>
 
         <article id="view-about" class="view">
             <!-- ABOUT CONTENT -->
@@ -324,9 +480,44 @@
         </dialog>
 
         <article id="view-cart" class="view">
-            <!-- CART CONTENT -->
-            <h2>Your Cart</h2>
+            <h2 class="cart-title">Shopping Cart</h2>
+
+            <div id="cartContainer"></div>
+
+            <div class="cart-bottom">
+                <div class="cart-shipping">
+                    <h3>Shipping</h3>
+
+                    <label>Method</label>
+                    <select id="shipMethod">
+                        <option value="Standard">Standard</option>
+                        <option value="Express">Express</option>
+                        <option value="Priority">Priority</option>
+                    </select>
+
+                    <label>Destination</label>
+                    <select id="shipDestination">
+                        <option value="CA">Canada</option>
+                        <option value="US">United States</option>
+                        <option value="INT">International</option>
+                    </select>
+                </div>
+
+                <div class="cart-summary">
+                    <h3>Summary</h3>
+                    <p>Merchandise: <span id="sumMerch">$0.00</span></p>
+                    <p>Shipping: <span id="sumShipping">$0.00</span></p>
+                    <p>Tax: <span id="sumTax">$0.00</span></p>
+                    <p class="total">Total: <span id="sumTotal">$0.00</span></p>
+
+                    <button id="checkoutBtn" class="checkout-btn">Checkout</button>
+                </div>
+            </div>
         </article>
+
+<!-- Toast popup -->
+<div id="cartToast" class="toast">Item added to cart!</div>
+
 
     </main>
 
