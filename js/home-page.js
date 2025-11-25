@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 // Update product image based on ID
                 const img = card.querySelector("img");
-                img.src = `images/${prod.id}_a.jpg`;
+                img.src = `images/${prod.id.toLowerCase()}_a.jpg`;
                 img.alt = prod.name;
 
                 //  MAKE CARD CLICKABLE → OPEN PRODUCT VIEW

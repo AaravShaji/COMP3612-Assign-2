@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
         descEl.textContent = prod.description;
         matEl.textContent = prod.material || "Cotton blend";
 
-        mainImg.src = `images/${prod.id}_a.jpg`;
+        mainImg.src = `images/${prod.id.toLowerCase()}_a.jpg`;
 
         thumbs.innerHTML = "";
 
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ["a", "b"].forEach(letter => {
             const img = document.createElement("img");
 
-            img.src = `images/${prod.id}_${letter}.jpg`;
+            img.src = `images/${prod.id.toLowerCase()}_${letter}.jpg`;
             img.className = "product-thumb";
             img.onclick = () => (mainImg.src = img.src);
             thumbs.appendChild(img);

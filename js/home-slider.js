@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const img = document.createElement("img");
 
             img.classList.add("slide");
-            img.src = `images/${prod.id}_a.jpg`;
+            img.src = `images/${prod.id.toLowerCase()}_a.jpg`;
             img.alt = prod.name;
             track.appendChild(img);
         });

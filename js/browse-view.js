@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
             card.className = "browse-product-card";
 
             card.innerHTML = `
-                <img src="images/${prod.id}_a.jpg" alt="${prod.name}">
+                <img src="images/${prod.id.toLowerCase()}_a.jpg" alt="${prod.name}">
                 <h4>${prod.name}</h4>
                 <p>$${prod.price}</p>
                 <button class="add-cart-btn" data-id="${prod.id}">+</button>
