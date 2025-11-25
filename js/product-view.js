@@ -1,12 +1,19 @@
-/* ============================= */
-/* SINGLE PRODUCT VIEW JAVASCRIPT */
-/* ============================= */
+/* ============================== 
+/* SINGLE PRODUCT VIEW JAVASCRIPT 
+/* ============================== 
+/*  This script handles:
+  - Opening the single-product view when a product is selected
+  - Populating product details (images, name, price, description, etc.)
+  - Rendering size and color options
+  - Wiring up "Add to Cart"
+  - Showing a small "related products" section
+*/
 
 document.addEventListener("DOMContentLoaded", () => {
 
     let allProducts = [];
 
-    // DOM elements
+    // DOM element References 
     const viewProduct = document.getElementById("view-product");
     const breadcrumb = document.getElementById("productBreadcrumb");
     const mainImg = document.getElementById("productMainImg");
@@ -21,23 +28,35 @@ document.addEventListener("DOMContentLoaded", () => {
     const addToCartBtn = document.getElementById("productAddToCart");
     const relatedContainer = document.getElementById("relatedProducts");
 
-    // Load product list
+    /* ============================
+    /* LOAD PRODUCT LIST (ONCE)
+    /* ============================
+    /*
+     * Ask ClothifyData for the product list.
+     * This uses the shared loader which either:
+     *  - pulls from localStorage, or
+     *  - fetches from the API and then caches it.
+     */
     ClothifyData.loadProducts().then(data => {
         allProducts = data;
     });
 
-    // =====================================================
-    // OPEN PRODUCT VIEW
-    // =====================================================
+    /* =========================
+    /* OPEN PRODUCT VIEW
+    /* =========================
+    /* Expose a global function so other scripts can open a product:
+     * - Used by home-page.js (featured products)
+     * - Used by related products cards
+    */
     window.openProductView = function(productId) {
 
         const prod = ClothifyData.getProductById(productId);
         if (!prod) return;
 
+        // Switch SPA view: hide all, show only the product view
         document.querySelectorAll(".view").forEach(v => v.classList.remove("active"));
         viewProduct.classList.add("active");
 
-        // Breadcrumb
         breadcrumb.innerHTML = `
             <a data-view="home" class="nav-link">Home</a> >
             <a data-view="browse" class="nav-link">${prod.gender}</a> >
@@ -45,26 +64,42 @@ document.addEventListener("DOMContentLoaded", () => {
             ${prod.name}
         `;
 
-        // Details
         titleEl.textContent = prod.name;
         priceEl.textContent = `$${prod.price}`;
         descEl.textContent = prod.description;
         matEl.textContent = prod.material || "Cotton blend";
 
-        // Main image
         mainImg.src = `images/${prod.id}_a.jpg`;
 
-        // Thumbnails
         thumbs.innerHTML = "";
+
+        /*-------------------------------
+        /* THUMBNAIL IMAGES
+        /*-------------------------------
+        /*
+         * Clear any previous thumbnails, then add up to two:
+         *   - _a.jpg
+         *   - _b.jpg
+         * Clicking a thumbnail replaces the main image.
+         */
         ["a", "b"].forEach(letter => {
             const img = document.createElement("img");
+
             img.src = `images/${prod.id}_${letter}.jpg`;
             img.className = "product-thumb";
             img.onclick = () => (mainImg.src = img.src);
             thumbs.appendChild(img);
         });
 
-        // Sizes
+        /*-------------------------------
+        /* SIZE BUTTONS
+        /*-------------------------------
+        /*
+         * Create one button per available size.
+         * Clicking a size:
+         *   - clears "active" from all other size buttons
+         *   - marks the clicked button as "active"
+         */
         sizeContainer.innerHTML = "";
         (prod.sizes || []).forEach(size => {
             const btn = document.createElement("button");
@@ -77,7 +112,14 @@ document.addEventListener("DOMContentLoaded", () => {
             sizeContainer.appendChild(btn);
         });
 
-        // Colors
+        /*-------------------------------
+        /* COLOR SWATCHES
+        /*-------------------------------
+        /*
+         * For each color in prod.colors, draw a small colored circle/box.
+         * Note: here we only visually show colors; selection is simplified
+         * to using the first color when adding to cart.
+         */
         colorContainer.innerHTML = "";
         (prod.colors || []).forEach(color => {
             const swatch = document.createElement("span");
@@ -86,10 +128,18 @@ document.addEventListener("DOMContentLoaded", () => {
             colorContainer.appendChild(swatch);
         });
 
-        // Related
         renderRelatedProducts(prod);
 
-        // ADD TO CART
+        /*-------------------------------
+        /* ADD TO CART BUTTON BEHAVIOUR
+        /*-------------------------------
+        /*
+         * When the user clicks "Add to Cart":
+         *  1. Read quantity (default to 1 if invalid)
+         *  2. Check if a size is required; if so, ensure one is selected
+         *  3. For color, pick the first available color 
+         *  4. Call addToCart(...) with all the details
+         */
         addToCartBtn.onclick = () => {
             const qty = parseInt(qtyEl.value) || 1;
 
@@ -109,9 +159,16 @@ document.addEventListener("DOMContentLoaded", () => {
         };
     };
 
-    // =====================================================
-    // Related Products
-    // =====================================================
+    /*======================
+    /* RELATED PRODUCTS
+    /*======================
+    /*
+     * Build a simple "You may also like" / related products row.
+     * Criteria:
+     *   - Not the same product
+     *   - Same category OR same gender as current product
+     *   - Limit to 4 items
+     */
     function renderRelatedProducts(prod) {
         relatedContainer.innerHTML = "";
 
@@ -135,7 +192,14 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Toast
+    /*=====================
+    /* TOAST MESSAGE HELPER
+    /*=====================
+    /*
+     * showToast(message)
+     * Shows a temporary notification (e.g., "Select a size first!")
+     * Assumes there is a #toast element in the HTML.
+     */
     function showToast(message) {
         const toast = document.getElementById("toast");
         toast.textContent = message;

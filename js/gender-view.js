@@ -1,4 +1,13 @@
-// Fills the category thumbnails on the Women/Men views using the API data.
+/*=============================================================
+/* CATEGORY THUMBNAIL IMAGE LOADING + CATEGORY CARD NAVIGATION
+/*=============================================================
+    This script:
+   • Loads the product list (once, via ClothifyData.loadProducts)
+   • Chooses 1 representative product per category
+   • Sets the category card thumbnail image automatically
+   • Makes each category card open the Browse page
+   • Applies gender + category filters instantly
+*/
 
 document.addEventListener("DOMContentLoaded", () => {
     if (!window.ClothifyData || typeof ClothifyData.loadProducts !== "function") {
@@ -6,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-    ClothifyData.loadProducts()
+    ClothifyData.loadProducts() //Load product data and fill category thumbnails
         .then(products => {
             const cards = document.querySelectorAll(".category-card");
             cards.forEach(card => {
@@ -33,6 +42,16 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .catch(err => console.error("ERROR setting gender thumbnails:", err));
     
+    /*-----------------------------
+    /* CATEGORY CARD CLICK HANDLER
+    /*-----------------------------
+       When the user clicks a category, automatically:
+
+      • Switch to Browse View
+      • Apply correct gender filter
+      • Apply correct category filter
+      • Trigger BrowseView filtering
+    */
     document.addEventListener("click", async (e) => {
         const card = e.target.closest(".category-card");
         if (!card) return;
@@ -40,15 +59,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const gender = card.dataset.gender;       // "women" or "men"
         const category = card.dataset.category;   // "outerwear", "dresses", etc.
 
-        // Switch to Browse View
         document.querySelectorAll(".view").forEach(v => v.classList.remove("active"));
         document.getElementById("view-browse").classList.add("active");
 
-        // Reset filters
         document.querySelectorAll("#filter-gender input, #filter-category input")
             .forEach(cb => cb.checked = false);
 
-        // Apply gender checkbox
         const genderBox = document.querySelector(`#filter-gender input[value="${gender}s"]`);
         if (genderBox) {
             genderBox.checked = true;
@@ -76,8 +92,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-/*
- * This maps the UI category names to the real JSON category/name fields.
+/* Function: pickProductForCategory()
+ *
+ * Given the full product list, gender, and category
+ * return ONE representative product that matches.
+ *
+ * This is used to choose which product image is shown
+ * on each category card thumbnail.
  */
 function pickProductForCategory(allProducts, uiGender, uiCategory) {
     const genderKey = uiGender === "women" ? "womens" : "mens";

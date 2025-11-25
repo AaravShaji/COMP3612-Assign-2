@@ -1,19 +1,32 @@
-/* ============================= */
-/* BROWSE VIEW JAVASCRIPT */
-/* ============================= */
+/* ============================================================
+   BROWSE VIEW JAVASCRIPT 
+   ------------------------------------------------------------
+   Responsibilities:
+
+   - Load all products (from API or localStorage)
+   - Allow filtering by gender / category / size / color
+   - Allow sorting (name, price, category)
+   - Render product cards dynamically
+   - Generate removable filter tags (“chips”)
+   - Handle “+” add-to-cart buttons
+   ============================================================ */
 
 document.addEventListener("DOMContentLoaded", () => {
 
     // DOM references
-    const grid = document.getElementById("browseGrid");
-    const sortSelect = document.getElementById("browse-sort");
-    const clearAllBtn = document.getElementById("clearAllFilters");
+    const grid                = document.getElementById("browseGrid");
+    const sortSelect          = document.getElementById("browse-sort");
+    const clearAllBtn         = document.getElementById("clearAllFilters");
     const filterTagsContainer = document.getElementById("filterTagsContainer");
-    const filterCheckboxes = document.querySelectorAll(
+    const filterCheckboxes    = document.querySelectorAll(
         ".browse-sidebar input[type='checkbox'][data-filter]"
     );
 
-    // Application state
+    /* ============================================================
+       APPLICATION STATE
+       - Holds product list AND current filter selections.
+       - Filters use Sets for easy add/remove operations.
+       ============================================================ */
     const state = {
         products: [],
         filters: {
@@ -31,7 +44,11 @@ document.addEventListener("DOMContentLoaded", () => {
         applyFiltersAndRender();
     });
 
-    // --------- Event listeners for filters ----------
+    /* ============================================================
+       FILTER CHECKBOX HANDLING
+       - Each checkbox modifies a specific Set in state.filters.
+       - After change, the grid is re-rendered.
+       ============================================================ */
     filterCheckboxes.forEach(cb => {
         cb.addEventListener("change", () => {
             const type = cb.dataset.filter;
@@ -44,7 +61,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Sort selector
     if (sortSelect) {
         sortSelect.addEventListener("change", () => {
             state.sortBy = sortSelect.value;
@@ -52,7 +68,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Clear All Filters
     if (clearAllBtn) {
         clearAllBtn.addEventListener("click", () => {
             Object.values(state.filters).forEach(set => set.clear());
@@ -71,7 +86,13 @@ document.addEventListener("DOMContentLoaded", () => {
         renderFilterTags();
     }
 
-    // AND logic across filter groups
+    /* ============================================================
+       FILTERING (AND Logic)
+       - Gender must match if selected.
+       - Category must match if selected.
+       - Sizes: product must have at least one selected size.
+       - Colors: product must have at least one selected color.
+       ============================================================ */
     function matchesAllFilters(prod) {
 
         if (state.filters.gender.size > 0 &&
@@ -95,7 +116,11 @@ document.addEventListener("DOMContentLoaded", () => {
         return true;
     }
 
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+    /* ==================================================
+       SORTING (Uses spread to avoid mutating original)
+       ==================================================
+       Credit to: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+     */
     function sortProducts(items, sortBy) {
         const sorted = [...items];
         if (sortBy === "price") sorted.sort((a, b) => a.price - b.price);
@@ -104,9 +129,9 @@ document.addEventListener("DOMContentLoaded", () => {
         return sorted;
     }
 
-    // ==================================================
+    // ==================
     // Rendering helpers
-    // ==================================================
+    // ==================
     function renderGrid(items) {
         grid.innerHTML = "";
 
@@ -142,6 +167,10 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    /* ============================================================
+       RENDER ACTIVE FILTER TAGS ("chips")
+       Clicking a tag removes that filter and re-renders.
+       ============================================================ */
     function renderFilterTags() {
         filterTagsContainer.innerHTML = "";
 
@@ -164,9 +193,9 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     }
-    // ==================================================
-    // Animated expanding filters
-    // ==================================================
+    /* ============================================================
+       EXPANDING SIDEBAR FILTERS (accordion behaviour)
+       ============================================================ */
     document.querySelectorAll(".filter-toggle").forEach(toggle => {
         toggle.addEventListener("click", () => {
             const id = toggle.dataset.filterSection;

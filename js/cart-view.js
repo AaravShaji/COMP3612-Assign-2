@@ -1,32 +1,38 @@
-/* ============================= */
-/* CART VIEW JAVASCRIPT */
-/* ============================= */
+/* ============================================================
+   CART VIEW JAVASCRIPT
+   ------------------------------------------------------------
+   Responsibilities:
+   - Store and load cart data from localStorage
+   - Keep the cart badge count in sync
+   - Render the cart items list
+   - Handle quantity changes and item removal
+   - Calculate shipping, tax, and totals
+   - Validate checkout and clear cart on success
+   ============================================================ */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    const cartContainer = document.getElementById("cartContainer");
-    const badge = document.getElementById("cartCountBadge");
+    // DOM Element References
+    const cartContainer     = document.getElementById("cartContainer");
+    const badge             = document.getElementById("cartCountBadge");
+    const shipMethod        = document.getElementById("shipMethod");
+    const shipDestination   = document.getElementById("shipDestination");
+    const sumMerch          = document.getElementById("sumMerch");
+    const sumShipping       = document.getElementById("sumShipping");
+    const sumTax            = document.getElementById("sumTax");
+    const sumTotal          = document.getElementById("sumTotal");
+    const checkoutBtn       = document.getElementById("checkoutBtn");
+    const toast             = document.getElementById("cartToast");
 
-    const shipMethod = document.getElementById("shipMethod");
-    const shipDestination = document.getElementById("shipDestination");
-
-    const sumMerch = document.getElementById("sumMerch");
-    const sumShipping = document.getElementById("sumShipping");
-    const sumTax = document.getElementById("sumTax");
-    const sumTotal = document.getElementById("sumTotal");
-
-    const checkoutBtn = document.getElementById("checkoutBtn");
-
-    const toast = document.getElementById("cartToast");
-
-    // Cart storage
     let cart = JSON.parse(localStorage.getItem("CLOTHIFY_CART") || "[]");
 
+    /** Persist cart to localStorage and update badge counter. */
     function saveCart() {
         localStorage.setItem("CLOTHIFY_CART", JSON.stringify(cart));
         updateBadge();
     }
 
+    /** Update the cart badge to show total quantity of all items. */
     function updateBadge() {
         badge.textContent = cart.reduce((sum, item) => sum + item.qty, 0);
     }
@@ -34,9 +40,16 @@ document.addEventListener("DOMContentLoaded", () => {
     updateBadge();
 
 
-    // ==================================================
-    // Add to Cart (called globally)
-    // ==================================================
+    /*==================================================
+    /* ADD TO CART (GLOBAL FUNCTION)
+    /*==================================================
+    /*
+     * window.addToCart is called from the product view when user clicks
+     * "Add to Cart". It:
+     *  - finds existing line with same product + size + color
+     *  - increments quantity OR adds a new line
+     *  - saves and shows a toast
+     */
     window.addToCart = function(product, qty = 1, size = "default", color = "default") {
 
         const existing = cart.find(
@@ -58,9 +71,16 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
 
-    // ==================================================
-    // Render Cart View
-    // ==================================================
+    /*==================================================
+    /* RENDER CART VIEW
+    /*==================================================
+    /*
+     * window.renderCartView:
+     *  - Shows "empty cart" message if nothing in cart
+     *  - Otherwise creates a row for each cart item with:
+     *      thumbnail, name, size/color, price, qty controls, subtotal, remove button
+     *  - Recalculates the summary totals (merch, ship, tax, total)
+     */
     window.renderCartView = function() {
 
         if (cart.length === 0) {
@@ -135,9 +155,16 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
 
-    // ==================================================
-    // Update Summary
-    // ==================================================
+    /*==================================================
+    /* UPDATE SUMMARY (MERCH, SHIPPING, TAX, TOTAL)
+    /*==================================================
+    /*
+     * Recomputes:
+     *  - Merchandise subtotal
+     *  - Shipping cost (based on method + destination)
+     *  - Tax (5% for Canada only)
+     *  - Final total
+     */
     function updateSummary(merchTotal) {
 
         sumMerch.textContent = `$${merchTotal.toFixed(2)}`;
@@ -157,9 +184,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // ==================================================
-    // Shipping Calculator
-    // ==================================================
+    /*=====================
+    /* SHIPPING CALCULATOR
+    /*=====================
+    /*
+     * calculateShipping(total):
+     *  - Free shipping if total >= $500
+     *  - Otherwise, shipping based on:
+     *      • Destination (CA / US / INT)
+     *      • Method (Standard / Express / Priority)
+     */
     function calculateShipping(total) {
         if (total === 0) return 0;
         if (total >= 500) return 0;
@@ -178,19 +212,23 @@ document.addEventListener("DOMContentLoaded", () => {
     shipDestination.addEventListener("change", () => renderCartView());
 
 
-    // ==================================================
-    // Checkout
-    // ==================================================
+    /*==================
+    /* CHECKOUT HANDLING
+    /*==================
+    /*
+     * On checkout:
+     *  - Validate that shipping method & destination are selected
+     *  - Highlight invalid fields
+     *  - If valid: show success toast, clear cart, re-render, go home
+     */
     checkoutBtn.addEventListener("click", () => {
 
-        const shipWarn = document.getElementById("shipWarning");
-
-        const method = shipMethod.value.trim();
-        const dest   = shipDestination.value.trim();
+        const shipWarn  = document.getElementById("shipWarning");
+        const method    = shipMethod.value.trim();
+        const dest      = shipDestination.value.trim();
 
         let valid = true;
 
-        // Reset classes
         shipMethod.classList.remove("invalid");
         shipDestination.classList.remove("invalid");
 
@@ -226,14 +264,19 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("view-home").classList.add("active");
     });
 
-    // Show cart contents whenever Cart navbar button is pressed
+    // When the user clicks the Cart button in navbar, refresh contents
     document.querySelector(".cart-btn").addEventListener("click", () => {
         renderCartView();
     });
 
-    // ==================================================
-    // Toast Message
-    // ==================================================
+    /*======================
+    /* TOAST MESSAGE HELPER
+    /*======================
+    /*
+     * showToast(msg):
+     *  - Briefly shows a toast message at the bottom/top of the screen
+     *  - Used for: "Added to cart!" and "Checkout successful!"
+     */
     function showToast(msg) {
         toast.textContent = msg;
         toast.classList.add("show");
