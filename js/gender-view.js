@@ -32,6 +32,48 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         })
         .catch(err => console.error("ERROR setting gender thumbnails:", err));
+    
+    document.addEventListener("click", async (e) => {
+        const card = e.target.closest(".category-card");
+        if (!card) return;
+
+        const gender = card.dataset.gender;       // "women" or "men"
+        const category = card.dataset.category;   // "outerwear", "dresses", etc.
+
+        // Switch to Browse View
+        document.querySelectorAll(".view").forEach(v => v.classList.remove("active"));
+        document.getElementById("view-browse").classList.add("active");
+
+        // Reset filters
+        document.querySelectorAll("#filter-gender input, #filter-category input")
+            .forEach(cb => cb.checked = false);
+
+        // Apply gender checkbox
+        const genderBox = document.querySelector(`#filter-gender input[value="${gender}s"]`);
+        if (genderBox) {
+            genderBox.checked = true;
+            genderBox.dispatchEvent(new Event("change"));
+        }
+
+        // Apply category checkbox
+        const catLabel = category.charAt(0).toUpperCase() + category.slice(1);
+        const catBox = document.querySelector(`#filter-category input[value="${catLabel}"]`);
+        if (catBox) {
+            catBox.checked = true;
+            catBox.dispatchEvent(new Event("change"));
+        }
+
+        // Force browse filtering + tag rendering
+        if (window.BrowseView && typeof BrowseView.applyFilters === "function") {
+            BrowseView.applyFilters();
+        }
+        if (window.BrowseView && typeof BrowseView.renderFilterTags === "function") {
+            BrowseView.renderFilterTags();
+        }
+
+        document.getElementById("browseGrid")?.scrollIntoView({ behavior: "smooth" });
+    });
+
 });
 
 /*
