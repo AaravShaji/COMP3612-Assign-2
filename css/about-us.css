@@ -8,7 +8,7 @@
     text-align: center;
 }
 
-.about-section {
+.about-section {  /*Prompt: How do I style my About Us section so it is centered and readable*/
     max-width: 850px;
     margin: 0 auto;
     padding: 20px 10px;
@@ -58,6 +58,7 @@
     margin-bottom: 40px;
 }
 
+/*Prompt: How can I come up with a CSS for a small card component for team members?*/
 .team-card {
     background: white;
     padding: 16px;
