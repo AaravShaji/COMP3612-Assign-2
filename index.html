@@ -482,18 +482,23 @@
                     <h3>Shipping</h3>
 
                     <label>Method</label>
-                    <select id="shipMethod">
+                    <select id="shipMethod" class="ship-select">
+                        <option value="" selected>-- Select Method --</option>
                         <option value="Standard">Standard</option>
                         <option value="Express">Express</option>
                         <option value="Priority">Priority</option>
                     </select>
 
                     <label>Destination</label>
-                    <select id="shipDestination">
+                    <select id="shipDestination" class="ship-select">
+                        <option value="" selected>-- Select Destination --</option>
                         <option value="CA">Canada</option>
                         <option value="US">United States</option>
                         <option value="INT">International</option>
                     </select>
+
+                    <p id="shipWarning" class="ship-warning">Please select shipping method & destination before checkout.</p>
+
                 </div>
 
                 <div class="cart-summary">

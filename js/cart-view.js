@@ -177,15 +177,50 @@ document.addEventListener("DOMContentLoaded", () => {
        CHECKOUT
     ========================== */
     checkoutBtn.addEventListener("click", () => {
+
+        const shipWarn = document.getElementById("shipWarning");
+
+        const method = shipMethod.value.trim();
+        const dest   = shipDestination.value.trim();
+
+        let valid = true;
+
+        // Reset classes
+        shipMethod.classList.remove("invalid");
+        shipDestination.classList.remove("invalid");
+
+        // Validation check
+        if (!method) {
+            shipMethod.classList.add("invalid");
+            valid = false;
+        }
+
+        if (!dest) {
+            shipDestination.classList.add("invalid");
+            valid = false;
+        }
+
+        if (!valid) {
+            shipWarn.style.display = "block";
+            requestAnimationFrame(() => shipWarn.style.opacity = "1");
+            return;
+        }
+
+        // If both are selected → allow checkout
+        shipWarn.style.opacity = "0";
+        setTimeout(() => (shipWarn.style.display = "none"), 300);
+
         showToast("Checkout successful!");
+
         cart = [];
         saveCart();
         renderCartView();
 
-        // Return to home
+        // Return to home after checkout
         document.querySelectorAll(".view").forEach(v => v.classList.remove("active"));
         document.getElementById("view-home").classList.add("active");
     });
+
 
 
     /* ==========================
