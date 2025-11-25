@@ -70,43 +70,42 @@ document.addEventListener("DOMContentLoaded", () => {
         showToast("Added to cart!");
     };
 
-
-    /*==================================================
-    /* RENDER CART VIEW
-    /*==================================================
-    /*
-     * window.renderCartView:
-     *  - Shows "empty cart" message if nothing in cart
-     *  - Otherwise creates a row for each cart item with:
-     *      thumbnail, name, size/color, price, qty controls, subtotal, remove button
-     *  - Recalculates the summary totals (merch, ship, tax, total)
-     */
+    /*-----------------
+    * renderCartView()
+    * -----------------
+    * Re-renders the entire Cart view based on the current 'cart' array.
+    * - If the cart is empty:
+    *     • Shows an "empty cart" message
+    *     • Disables shipping controls
+    *     • Clears summary + disables checkout
+    * - If the cart has items:
+    *      • Builds a row for each item (thumb, name, size, color, price, qty, subtotal)
+    *      • Wires up +/– quantity buttons and a remove button
+    *      • Recalculates the merchandise total and summary section
+    */
     window.renderCartView = function() {
 
         if (cart.length === 0) {
             cartContainer.innerHTML = `<p class="empty-cart">Your cart is empty.</p>`;
 
-            // Disable shipping + destination
             shipMethod.disabled = true;
             shipDestination.disabled = true;
 
-            // Clear summary
             updateSummary(0);
 
-            // Disable checkout
             checkoutBtn.disabled = true;
             checkoutBtn.classList.add("disabled-checkout");
 
             return;
         }
-        // Enable shipping + checkout when items exist
-        shipMethod.disabled = false;
+
+        shipMethod.disabled      = false;
         shipDestination.disabled = false;
-        checkoutBtn.disabled = false;
+        checkoutBtn.disabled     = false;
         checkoutBtn.classList.remove("disabled-checkout");
 
-        checkoutBtn.disabled = false;
-        cartContainer.innerHTML = "";
+        checkoutBtn.disabled     = false;
+        cartContainer.innerHTML  = "";
 
         let merchandiseTotal = 0;
 
