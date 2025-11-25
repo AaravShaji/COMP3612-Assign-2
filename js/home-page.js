@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 img.src = `images/${prod.id}_a.jpg`;
                 img.alt = prod.name;
 
-                // ⭐ MAKE CARD CLICKABLE → OPEN PRODUCT VIEW
+                //  MAKE CARD CLICKABLE → OPEN PRODUCT VIEW
                 card.style.cursor = "pointer";
                 card.addEventListener("click", () => openProductView(prod.id));
                 img.addEventListener("click", () => openProductView(prod.id));
