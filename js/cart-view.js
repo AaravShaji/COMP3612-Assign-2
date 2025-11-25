@@ -104,7 +104,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 <div class="cart-item-info">
                     <h4>${item.name}</h4>
-                    <p class="small-label">Color: <strong>${item.color === "default" ? "Default" : item.color}</strong></p>
+                    <p class="small-label">Color: <strong>${
+                        item.color === "default"
+                            ? (ClothifyData.getProductById(item.id).color?.[0]?.name || "Default")
+                            : item.color
+                    }</strong></p>
                     <p class="small-label">Size: <strong>${item.size === "default" ? "Default" : item.size}</strong></p>
 
                 </div>
