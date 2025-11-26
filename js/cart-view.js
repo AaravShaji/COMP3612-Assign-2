@@ -82,6 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
     *      • Builds a row for each item (thumb, name, size, color, price, qty, subtotal)
     *      • Wires up +/– quantity buttons and a remove button
     *      • Recalculates the merchandise total and summary section
+    * https://www.w3schools.com/jsref/prop_select_disabled.asp
     */
     window.renderCartView = function() {
 
@@ -182,6 +183,7 @@ document.addEventListener("DOMContentLoaded", () => {
      *  - Shipping cost (based on method + destination)
      *  - Tax (5% for Canada only)
      *  - Final total
+     * https://www.w3schools.com/java/java_conditions_shorthand.asp
      */
     function updateSummary(merchTotal) {
 

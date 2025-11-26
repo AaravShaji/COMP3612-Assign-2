@@ -81,6 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
          *   - _a.jpg
          *   - _b.jpg
          * Clicking a thumbnail replaces the main image.
+         * Iterates through a and b then set image to ${id}_a and ${id}_b
          * https://forum.freecodecamp.org/t/its-this-a-good-way-to-create-a-image-loop/323175
          */
         ["a", "b"].forEach(letter => {
@@ -140,6 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
          *  2. Check if a size is required; if so, ensure one is selected
          *  3. For color, pick the first available color 
          *  4. Call addToCart(...) with all the details
+         * https://www.w3schools.com/java/java_conditions_shorthand.asp
          */
         addToCartBtn.onclick = () => {
             const qty = parseInt(qtyEl.value) || 1;
@@ -169,6 +171,8 @@ document.addEventListener("DOMContentLoaded", () => {
      *   - Not the same product
      *   - Same category OR same gender as current product
      *   - Limit to 4 items
+     * https://www.w3schools.com/jsref/jsref_slice_array.asp
+     * https://www.freecodecamp.org/news/javascript-filter-method/
      */
     function renderRelatedProducts(prod) {
         relatedContainer.innerHTML = "";
