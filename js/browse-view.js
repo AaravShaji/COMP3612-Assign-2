@@ -94,6 +94,10 @@ document.addEventListener("DOMContentLoaded", () => {
        - Category must match if selected.
        - Sizes: product must have at least one selected size.
        - Colors: product must have at least one selected color.
+       https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/has
+       https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray
+       https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some
+       https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
        ============================================================ */
     function matchesAllFilters(prod) {
 
@@ -122,6 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
        SORTING (Uses spread to avoid mutating original)
        ==================================================
        Credit to: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+       https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare
      */
     function sortProducts(items, sortBy) {
         const sorted = [...items];

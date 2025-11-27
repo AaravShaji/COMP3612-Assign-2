@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
            3. Remove the wrapper and extract products back out
 
             Source: https://medium.com/@apestruy/shuffling-an-array-in-javascript-8fcbc5ff12c7
+            http://w3schools.com/jsref/jsref_slice_array.asp
         */
         const shuffled = products
             .map(x => ({ x, rand: Math.random() }))

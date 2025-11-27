@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /** Update the cart badge to show total quantity of all items. */
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
     function updateBadge() {
         badge.textContent = cart.reduce((sum, item) => sum + item.qty, 0);
     }
@@ -147,6 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
 
             /* Quantity + and – */
+            // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
             row.querySelector(".inc").onclick = () => {
                 item.qty++;
                 saveCart();
@@ -240,6 +242,7 @@ document.addEventListener("DOMContentLoaded", () => {
      *  - Validate that shipping method & destination are selected
      *  - Highlight invalid fields
      *  - If valid: show success toast, clear cart, re-render, go home
+     * https://www.w3schools.com/jsref/jsref_trim_string.asp
      */
     checkoutBtn.addEventListener("click", () => {
 
