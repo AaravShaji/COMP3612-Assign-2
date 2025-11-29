@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const genderBox = document.querySelector(`#filter-gender input[value="${gender}s"]`);
         if (genderBox) {
             genderBox.checked = true;
-            genderBox.dispatchEvent(new Event("change"));
+            genderBox.dispatchEvent(new Event("change")); // Credit to: https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/dispatchEvent
         }
 
         // Apply category checkbox
