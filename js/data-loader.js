@@ -26,7 +26,7 @@ function loadProducts() {
 
     // --- Rule 1: Already loaded in memory ---
     if (productsCache.length > 0) { 
-        return Promise.resolve(productsCache);
+        return Promise.resolve(productsCache); // Credit to: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve
     }
 
     // --- Rule 2: Check localStorage ---
